@@ -186,7 +186,9 @@ printf("%s", str1);     // hello world!
 
 ## `char *` vs. `char[]`
 
-
+* When you declare a ==char pointer== eqaul to a string literal, the string literal is not stred on the stack. Instead, it's stored in a special area of memory called the "==data segment==". You cannot modify memory in this segment.
+* This applies only to **creating new strings with char ***. This does not apply for making a char * that points to an existing stack string.
+* 
 
 
 
@@ -199,7 +201,38 @@ printf("%s", str1);     // hello world!
 
 
 
+### How to print `size_t`
 
+```c
+printf("sizeof(i) = %zu\n", sizeof(i));
+```
+
+
+
+## Pointers to Strings
+
+```c
+void skipCSPrefix(char **strPtr) {
+  char *prefix = strstr(*strPtr, "CS");
+  if (prefix != NULL && prefix == *strPtr) {
+    *strPtr += strlen("CS");
+  }
+}
+int main(int argc, char *argv[]) {
+  char *myStr = "CS41";
+  skipCSPrefix(&myStr);
+  printf("%s\n", myStr);
+  return 0;
+}
+```
+
+<img src="/Users/xuzheng/Projects/notes/CSAPP/C-Strings.assets/image-20201115102036824.png" alt="image-20201115102036824" style="zoom:30%;" />
+
+
+
+* 传进skipCSPrefix的是myStr的地址, 因为我们想修改的是myStr这个pointer本身的值, 而不是它所指向的字符串
+
+<img src="/Users/xuzheng/Projects/notes/CSAPP/C-Strings.assets/image-20201115103602451.png" alt="image-20201115103602451" style="zoom:40%;" />
 
 ## Arrays of Strings
 

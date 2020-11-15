@@ -65,9 +65,22 @@ Return the maximum value in an array
 * Q1: What type should arr be?
 * A1: `void *` 
 * Q2 What should find_max return?
-* A2: 
+* A2: **_ApointerTo_ to the maximum element**
 * Q3: How do we get the address of the ith element of arr?
-* A3:
+* A3: **Cast arr as char *, add i * nelemsz (bytes)**
 * Q4: How do we compare an array element to the max we've seen so far?
-* A4:
+* A4: **Pass client-supplied callback function**
+
+```c
+void *find_max(void *arr, size_t nelems, size_t elemsz,
+              int (*cmpfn)(const void *, const void *))
+{
+  void *max = arr;
+  for (int i = 1; i<nelems; i++)
+  {
+    void *ith=(char *)arr + i * elemsz;
+    if(cmpfun(ith, max)>0) max = ith;
+  }
+}
+```
 

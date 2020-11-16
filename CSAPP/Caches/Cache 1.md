@@ -39,15 +39,15 @@ Memory Hierarchy
   * block size needs to be a power of two (in bytes)
   * ==\# of offset bits = log_2(block size)==
 
-  <img src="./Cache 1.assets/image-20201116160030421.png" alt="image-20201116160030421" style="zoom:33%;" />
+  <img src="./Cache 1.assets/image-20201116160030421.png" alt="image-20201116160030421" width="70%" height="70%" />
 
   
 
 * ***Tag field***: Leftover upper bits of memory address determine which portion of memory the block came from (identifier)
 
-  <img src="./Cache 1.assets/image-20201116160114214.png" alt="image-20201116160114214" style="zoom:33%;" />
+  <img src="./Cache 1.assets/image-20201116160114214.png" alt="image-20201116160114214" width="70%" height="70%" />
 
-<img src="./Cache 1.assets/image-20201116165921257.png" alt="image-20201116165921257" style="zoom:33%;" />
+<img src="./Cache 1.assets/image-20201116165921257.png" alt="image-20201116165921257" width="70%" height="70%" />
 
 * Meaning of the field sizes:
   * **Offset** bits <-> **2^offset^** bytes per block = 2^offset-2^ bytes per block
@@ -57,3 +57,9 @@ Memory Hierarchy
 
 
 ## Fully Associative Cache
+
+* 在cache里究竟有什么
+  * actual data block **8 x K = 8 x 2^Offset^** bits
+  * **Tag** field of address as identifier
+  * **Valid** bit (1 bit): Whether cache slot was filled in 
+  * 必要的替换管理位(LRU bits)

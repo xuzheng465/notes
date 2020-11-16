@@ -188,7 +188,13 @@ printf("%s", str1);     // hello world!
 
 * When you declare a ==char pointer== eqaul to a string literal, the string literal is not stred on the stack. Instead, it's stored in a special area of memory called the "==data segment==". You cannot modify memory in this segment.
 * This applies only to **creating new strings with char ***. This does not apply for making a char * that points to an existing stack string.
-* 
+* 如果要用指针初始化字符串字面量 最好加上const
+
+```c
+const char * p1 = "hello";
+```
+
+
 
 
 

@@ -50,11 +50,12 @@ Memory Hierarchy
 <img src="./Cache 1.assets/image-20201116165921257.png" alt="image-20201116165921257" width="70%" height="70%" />
 
 * Meaning of the field sizes:
+
   * **Offset** bits <-> **2^offset^** bytes per block = 2^offset-2^ bytes per block
+
   * **Tab** bits = A -**Offset**, where A = *# of address bits* (A=32 here)
-  * 
 
-
+    
 
 ## Fully Associative Cache
 
@@ -63,3 +64,23 @@ Memory Hierarchy
   * **Tag** field of address as identifier
   * **Valid** bit (1 bit): Whether cache slot was filled in 
   * 必要的替换管理位(LRU bits)
+
+## Read and Write
+
+### Handling Cache Hits
+
+* Read Hits 
+* Write Hits
+  1. Write-Through Policy: Always write data to cache and to memory (through cache)
+     * Forces cache and memory to always be consistent
+     * Slow! (every memory access is long)
+     * Include a Write Buffer that updates memory in parallel with processor
+  2. **Write-back Policy**: Write data only to cache, then update memory when block is removed
+     * Allows cache and memory to be inconsistent
+     * Multiple writes collected in cache, single write to memory per block
+     * **Dirty bit**: Extra bit per cache row that is set if block was written to (is "dirty") and needs to be written back.
+
+### Handling Cache Misses
+
+
+

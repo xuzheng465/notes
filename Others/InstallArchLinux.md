@@ -14,6 +14,8 @@ And, in the comment section,
 
 search this name, farookphuket
 
+Don't forget installing `NetworkManager`
+
 
 
 I list two problems I encounter in my installing process.
@@ -33,4 +35,26 @@ I tried to install two system, but I messed up with the windows storage system. 
 [This post](https://www.dell.com/community/SupportAssist-for-PCs/Laptop-almost-always-booting-into-SupportAssist/m-p/5708479#M86181) solve my problem. In BIOS, I set boot option to xxx.efi
 
 
+
+
+
+# After Installation
+
+
+
+## Setup network
+
+
+
+
+
+
+
+
+
+## Other Resources
+
+
+
+[Arch Linux Installation (2020) | Full Guide](youtube.com/watch?v=QMBE5Kxb8Bg)
 

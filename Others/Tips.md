@@ -4,7 +4,11 @@ Tips
 
 ## 在Linux中如何查看当前目录文件大小, 并从大到小排列?
 
+```bash
 du -h --max-depth=1 | sort -hr
+```
+
+
 
 
 

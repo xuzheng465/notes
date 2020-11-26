@@ -75,3 +75,36 @@ Project code:
 
   * 
 
+## Templates
+
+### Must
+
+Must is a helper that wraps a call to a function returning (*Template, error) and panics if the error is non-nil.  It is intended for use in variable initializations such as
+
+```go
+var t = template.Must(template.New("name").Parse("html"))
+```
+
+
+
+
+
+### ParseFiles
+
+```go
+func (t *Template) ParseFiles(filenames ...string) (*Template, error)
+```
+
+ParseFiles parses the named files and associates the resulting templates with t. If an error occurs, parsing stops and the returned template is nil; otherwise it is t. There must be at least one file. 
+
+
+
+
+
+### ParseGlob
+
+ParseGlob parses the template definitions in the files identified by the pattern and associates the resulting templates with t. The files are matched according to the semantics of filepath.Match, and the pattern must match at least one file. ParseGlob is equivalent to calling t.ParseFiles with the list of files matched by the pattern.
+
+ParseGlob 解析***模式字符***串所标识的文件中的模板定义，并将结果中的模板与 t 相关联。文件根据 filepath.Match 的语义进行匹配，并且模式必须至少匹配一个文件。ParseGlob相当于用模式匹配的文件列表调用t.ParseFiles。
+
+编者注: 相当于正则表达式版ParseFiles

@@ -109,6 +109,8 @@ returns the length of the maximum initial segment of str that consists entirely 
 
 strspn() 函数返回 str 的最大初始段长度，该段只包含 src 指向的字节串中的字符
 
+在遇到第一个不在accept中的字符前, 扫过了多少个str中的char
+
 > How many places canwe go  in the first string before I encounter a character _not_ in the second string?
 
 ```c

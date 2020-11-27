@@ -119,7 +119,29 @@ Objects Design:
 
 策略模式?
 
+```mermaid
+classDiagram
+	class Account {
+		-BigDecimel balance
+		-AccountState state
+		+holderVerified()
+		+closeAccount()
+		+freezeAccount()
+		+deposit(amount)
+		+withdraw(amount)
+	}
+	class AccountState {
+		<<interface>>
+		holderVerified()
+		closeAccount()
+		freezeAccount()
+		deposit(amount, addToBalance)
+		withdraw(balance, amount, subtractFromBalance)
+	}
+	AccountState <|.. Active
+```
 
+![mermaid-diagram-20201127124954](./MakingObjectOriented.assets/mermaid-diagram-20201127124954.png)
 
 A poorly desgined class example
 

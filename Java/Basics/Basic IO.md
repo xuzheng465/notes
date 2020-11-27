@@ -172,7 +172,116 @@ try {
 
 2. try-with-resource
 
+Several resources can be opened in the `try()`
 
+The will be closed automatically when leaving the try block.
+
+To be used in this pattern, a resource must implement ***AutoCloseable***.
+
+With only one method to implement: ***close()***
+
+Very easy to use for  homemake resources.
+
+```java
+try (Reader reader = ...;) {
+  // do sth with reader
+} catch (IOException e) {
+  // deal with the exception
+}
+```
+
+
+
+Marking, Resetting, Skipping
+
+A `mark()` call puts a flag on a given ele
+
+A `reset()` call **rewinds** to the pre marked ele.  
+
+A **skip()** call skips the next elements
+
+
+
+### Two ways of extending a `Reader`
+
+1. classes for a certain type of input
+   1. **Disk**: `FileReader`
+   2. **In-memory**: `CharArrayReader`, `StringReader`
+2. behavior to Reader
+   1. BufferedReader: a reader using bufferization
+   2. LIneNumberReader
+   3. PushbackReader
+
+
+
+```java
+File file = new File("files/data.txt");
+Reader reader = new FileReader(file);
+
+String text = "Hello World!";
+Reader strreader = new StringReader(text);
+```
+
+The `FileReader` class creates a reader on a file
+
+==**BufferedReader**==
+
+Reads the chars through buf
+
+BuffereedReader adds the readLine() method to Reader
+
+also supports the mark and skip ops
+
+```java
+File file = new File("data.txt");
+FileReader fileReader = new FileReader(file);
+BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+```
+
+==**LineNumberReader**==
+
+Same pattern for LineNumberReader
+
+LineNumberReader **extends** BufferedReader
+
+It adds a getLineNubmer() method
+
+```java
+File file = new File("data.txt");
+FileReader fileReader = new FileReader(file);
+LineNumberReader lineNumberReader = new LineNumberReader(fileReader);
+```
+
+
+
+#### factory method
+
+```java
+Path path = Paths.get("files/data.txt");
+BufferedReader reader2 = Files.newBufferedReader(path);
+```
+
+
+
+The most convinent way 
+
+```java
+public static void main(String[] args) {
+  Path path = Paths.get("files/bat-weasels.txt");
+  try (Stream<String> lines = Files.newBufferedReader(path).lines()){
+            lines.forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+}
+```
+
+
+
+# Writer
+
+<img src="./Basic IO.assets/image-20201127213952104.png" alt="image-20201127213952104" style="zoom:50%;" />
 
 
 

@@ -33,3 +33,33 @@ func (w http.ResponseWriter, r *http.Request) {
 
 
 中间件的一个非常常见的用例是在应用程序内进行日志记录, What sites are being accessed within your application inorder to gather some analytic information. 
+
+
+
+## Context
+
+
+
+### Context API
+
+```go
+type Context interface {
+  DeadLine() (deadline time.Time, ok bool)
+  Done() <-chan struct{}
+  Err() error
+  Value(key interface{}) interface{}
+}
+// read only
+```
+
+when to manipulate
+
+
+
+## HTTP/2
+
+* Request multiplexing
+* Header compression
+* Secure by default
+* Server push
+

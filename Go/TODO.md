@@ -3,6 +3,8 @@
 - [ ] [Build a Budget App CLI in Go](https://app.pluralsight.com/projects/build-a-budget-app-cli-in-go)
 - [ ] [Build a Temperature Converter CLI in Go](https://app.pluralsight.com/projects/build-temperature-converter-cli-in-go)
 - [ ] [Build a Vehicle Rating System in Go](https://app.pluralsight.com/projects/build-vehicle-rating-system-in-go)
+- [ ] [Deep Dive into Go FunctionsWWDeep Dive into Go Functions](https://app.pluralsight.com/library/courses/deep-dive-go-functions)
+- [ ] 
 
 
 

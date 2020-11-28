@@ -127,7 +127,22 @@ java.lang.ThreadGroup[name=main,maxpri=10]
 
 多个线程竞争同一资源时, 如果对资源的访问顺序敏感, 就称为**竞态条件**.
 
+Race conditions occur when a program depends upon the sequence or timing of threads for it to operate properly.
+
+
+
 导致竞态条件发生的代码区称为**临界区**.
+
+
+
+Memory inconsistencies
+
+* These errors occur when diff threads have inconsistent views of what should be the same data.
+
+Deadlocks
+
+* Occur when 2+ competing threads are waiting for the other to finish, & thus none ever do
+* <img src="./Week3.assets/image-20201128154631946.png" alt="image-20201128154631946" style="zoom:33%;" />
 
 ### 原子性
 
@@ -192,3 +207,5 @@ happens-before 原则 (先行发生原则):
 :question:思考:final声明的引用类型和原生类型在处理时有什么区别?
 
 Java里的常量替换. 写代码最大化用final是个好习惯.
+
+<img src="./Week3.assets/image-20201128153416641.png" alt="image-20201128153416641" style="zoom:33%;" />

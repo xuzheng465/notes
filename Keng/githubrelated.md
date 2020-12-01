@@ -28,3 +28,13 @@ you can do it in `.git/config` file
 
 [Ref](https://stackoverflow.com/questions/10909221/why-is-github-asking-for-username-password-when-following-the-instructions-on-sc#:~:text=If%20Git%20prompts%20you%20for,through%20strict%20firewalls%20and%20proxies.)
 
+
+
+
+
+## gitigore
+
+ gitignore.io
+
+
+

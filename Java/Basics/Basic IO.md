@@ -1,3 +1,7 @@
+# Basics
+
+
+
 bytes and chars
 
 disk, network, memory
@@ -7,8 +11,6 @@ disk, network, memory
 <img src="./Basic IO.assets/image-20201127191643282.png" alt="image-20201127191643282" style="zoom:20%;" />
 
 File and Path are models of a file or directory on the disk
-
-
 
 ## File
 
@@ -72,7 +74,7 @@ Other interesting methods
 
 
 
-# Reading Characters
+# Reader
 
 
 
@@ -283,5 +285,231 @@ public static void main(String[] args) {
 
 <img src="./Basic IO.assets/image-20201127213952104.png" alt="image-20201127213952104" style="zoom:50%;" />
 
+```java
+File file = new File("files/data.txt");
+Writer writer = new FileWriter(file);
 
+// It can also append the new content to the existing file
+Writer writer = new FileWriter(file, true);
+
+PrintWriter printer = new PrintWriter(writer);
+```
+
+By default, a file writer writer from the beginning of a file
+
+
+
+```java
+BufferedWriter bufferedWriter1 = new BufferedWriter(fileWriter);
+
+Path path = Paths.get("files/data.txt");
+BufferedWriter bufferedWriter2 = Files.newBufferedWriter(path, StandardCharsets.ISO_8859_1);
+// One can also pass other charsets
+```
+
+
+
+**OpenOption**
+
+- WRITE, APPEND
+- CREATE, CREATE_NEW
+- DELETE_ON_CLOSE
+
+
+
+Writing on an I/O resource (disk or network) is usually made on a buffer
+
+Then flushed to the output resource
+
+There is a **flush()** method on Writer.
+
+Closing a writer **triggers** a **flush** call
+
+
+
+A flush call propagrate to all the streams
+
+Until the output resource is reached
+
+And will trigger a system call
+
+The writing on the I/O is the responsibility of OS
+
+
+
+```java
+// Formatter === sprintf in unix
+
+```
+
+# Reading and Writing Bytes
+
+<img src="./Basic IO.assets/image-20201130094952389.png" alt="image-20201130094952389" style="zoom:50%;" />
+
+```java
+InputStream is = ...; //
+int nextByte = is.read();
+while(nextByte!=-1) {
+  //do something with nextByte
+  nextByte = is.read();
+}
+
+byte[] is = new byte[1024];
+int number = is.read(buffer);
+while (number!=-1) {
+  // do something with buffer
+  number = is.read(buffer);
+}
+```
+
+```java
+OutputStream os = ...;
+os.write(charc);
+```
+
+
+
+### classes for a certain type of medium
+
+- Disk: **FileInputStream** / **FileOutputStream**
+- In-memory: **ByteArrayInputStream** / **ByteArrayOutputStream**
+- Network: **SocketInputStream** / **SocketOutputStream**
+
+### classes that add behavior
+
+- **BufferedOutputStream**
+- **GzipOutputStream**
+- **ZipOutputStream**
+
+
+
+### Writing and reading bytes is also about
+
+- writing primitive types: int, float, etc...
+- and objects: Serialization
+
+There are classes for that!
+
+
+
+#### DataInputStream & DataOutputStream
+
+For **primitive** types
+
+```java
+OutputStream os = ...;
+DataOutputStream dos = new DataOutputStream(os);
+// There is a collection of writeXXX() methods
+// One for each primitive type
+dos.writeInt(10);
+dos.writeDouble(3.14d);
+dos.writeChar('H');
+dos.writeUTF("Hello"):
+```
+
+
+
+```java
+InputStream is = ...;
+DataInputStream dis = new DataInputStream(is);
+
+int i = dis.readInt();
+double d = dis.readDouble();
+char c = dis.readChar();
+String s = dis.readUTF();
+```
+
+
+
+```java
+OutputStream os = Files.newOutputStream(
+	Paths.get("files/file.bin"),
+  StandardOpenOptions.CREATE
+);
+DataOutputStream dos = new DataOutputStream(os);
+IntStream.range(0, 100).forEach(dos::writeInt);
+// This code writes 100 ints in a regular file
+```
+
+
+
+
+
+``` java
+OutputStream os = Files.newOutputStream(
+	Paths.get("files/file.bin.gz"),
+  StandardOpenOptions.CREATE
+);
+
+GZIPOutputStream gzos = new GZIPOutputStream(os);
+DataOutputStream dos = new DataOutputStream(os);
+IntStream.range(0, 100).forEach(dos::writeInt);
+```
+
+
+
+# R & W data and objects
+
+## About Serialization
+
+* Serialization is a general mechanism
+* It's about creating a portable representation of an object
+
+
+
+## Makeing a class serializable
+
+
+
+Only instances of serializable classes can be serialized.
+
+The only thing to do for the class is to implement the Serializable interface.
+
+Which has no method
+
+Add a special static filed: **serialVersionUID**
+
+If it is not, then it will be computed when needed
+
+e.g.
+
+```java
+public class Person implements Serializable {
+  private static final long serialVersionUID = 232424354512L;
+  
+  private String name;
+  private int age;
+}
+```
+
+* How is the serial version UID computed?
+* The computation is fully specified in the Java Language Specification.
+* It is a hash computed from the class name, interfaces implemented, methods, and fields using a SHA.
+
+* 如果编译器就有了, 就用, 不验证
+
+## Writing and reading serialized
+
+
+
+```java
+OutputStream os = Files.newOutputStream(
+	Paths.get("files/people.bin"),
+  StandardOpenOptions.CREATE
+);
+
+ObjectOutputStream oos = new ObjectOutputStream(os);
+oos.writeObject(person1);
+```
+
+
+
+```java
+InputStream is = Files.newInputSream(
+	Paths.get("files/people.bin"),
+  StandardOpenOptions.READ
+);
+ObjectInputStream ois = new ObjectInputStream(is);
+Person person1 = (Person)ois.readObject();
+```
 

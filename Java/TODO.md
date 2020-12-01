@@ -87,7 +87,21 @@ Kotlin
 
 
 
+TODO of TODO
+
+
+
 Great course
 
 CS891
+
+https://www.coursera.org/specializations/secure-coding-practices
+
+https://www.coursera.org/specializations/cs-fundamentals
+
+
+
+https://www.coursera.org/learn/computational-thinking-problem-solving
+
+
 

@@ -40,3 +40,21 @@ If there is only a daemon thread, the program will shutdown
 
 
 
+#### Pro with extending Thread
+
+* It's straightforward to exted the Thread super class
+  * Just override the run() hook method
+* All state and methods are consolidated in one place.
+  * enables central allocation and management of the thread
+  * The design is useful when the thread must be updated during runtime configuration changes
+    * e.g., interrupting/restarting a running thread and readding / writing its state
+
+#### Cons with extending Thread
+
+* A subclass must extend the Thread superclass
+  * This is restrictive since java only allows one superclass per subclass
+
+
+
+#### Pros of implementing Runnable
+

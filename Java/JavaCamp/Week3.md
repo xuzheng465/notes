@@ -95,7 +95,7 @@ Runnable: 可运行状态. CPU 从很多Runnable的线程里挑选一个.
    * 该方法与sleep()类似, 只是不能由用户指定暂停多长时间.
 3. t.join()/t.join(long millis), 当前线程里调用其他线程t的join方法, 当前线程进入WAITING/TIMED_WAITING状态, **当前线程不会释放已经持有的对象锁**. 
    * 线程t执行完毕或者millis时间到, 当前线程进入就绪状态.
-4. obj.wait(), 当前线程调用对象的wait()方法, 当前线程释放对象锁, 进入等待队列. 依靠notify()/notifyAll() 唤醒或者 wait(long timeout) timeout 时间到自动唤醒
+4. obj.wait(), 当前线程调用对象的wait()方法, 当前线程**释放对象锁**, 进入等待队列. 依靠notify()/notifyAll() 唤醒或者 wait(long timeout) timeout 时间到自动唤醒
 5. obj.notify() 唤醒再次对象监视器上等待的单个线程, 选择是任意性的. 
 6. notifyAll() 唤醒在此对象监视器上等待的所有线程.
 

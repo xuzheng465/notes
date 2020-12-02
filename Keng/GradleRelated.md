@@ -9,6 +9,8 @@ buildscript {
     repositories {
         maven { url 'https://maven.aliyun.com/repository/google/' }
         maven { url 'https://maven.aliyun.com/repository/jcenter/'}
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'

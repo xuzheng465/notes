@@ -39,12 +39,42 @@ typedef struct list {
 
 
 
-
-
-
-
 ## Change the icon size in macOS
 
 
 
 Finder->View->Show View Options
+
+
+
+# 学习开源的步骤
+
+个人觉得学习一个东西的步骤： 
+
+1、看介绍 
+
+2、看demo 
+
+3、看入门 
+
+4、自己做demo 
+
+5、manual、reference
+
+ 6、应用 
+
+7、看总结 
+
+8、看心得 
+
+9、思考 
+
+10、看源码 
+
+11、调试源码 
+
+12、修改源码 
+
+13、自己做简单实现 
+
+14、不断完善

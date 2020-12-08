@@ -1,0 +1,1406 @@
+hi Thank You Kelsey that was amazing
+
+you almost made me cry that it's not
+
+cool anyway today I'm here to tell your
+
+story I'm here to tell your story about
+
+my relationship with now how I
+
+discovered it and I went through this
+
+real relationship or at the beginning
+
+and can ignored it
+
+then I kinda hated it a little bit nail
+
+is annoying right and then I started
+
+understanding a little bit more and now
+
+I could say that it's kind of almost
+
+loved I'm gonna use loves a hard word
+
+for nail really but you know I
+
+appreciate it so I'm going to tell you
+
+why I think now something actually
+
+pretty cool before that I wanted to
+
+thank a couple of people actually first
+
+first of all I want to thank the go
+
+frickin team for making such an amazing
+
+conference this is amazing so random
+
+flub applause for Eric and Brian and the
+
+rest of the team they're amazing
+
+and I also wanted to thank the go team
+
+because without them I could not be here
+
+today I wanted to thank Rob Pike for
+
+saying yes when I interview with him
+
+four years ago four years ago and also
+
+to Andrew Durant for him for being such
+
+a good mentor he's awesome anyway also I
+
+wanted to welcome you to go freaking and
+
+I wanted to welcome every single one of
+
+you regardless of your gender your
+
+gender identity your sexual orientation
+
+your race your religion and even if you
+
+prefer spaces or tabs you are part of
+
+this community and the community is
+
+better because of you so welcome to
+
+gopher come okay so I'm gonna be talking
+
+about nothing all the time so I'm gonna
+
+first explain what is now what does it
+
+mean now what does it mean in the NGO
+
+context and is it actually useful
+
+spoiler alert it is otherwise this could
+
+be a really bad talk so first time I saw
+
+you I was like now use me still no like
+
+that is not how you read it I did not
+
+know this word you might be surprised
+
+I'm not from here so English no my
+
+mother tongue and what do I do when I
+
+discover a new
+
+new word Google Translate and any other
+
+know was known in Catalan my mother
+
+tongue it was like easy then I look for
+
+now and it is known I was like oh okay
+
+so it might be the same word but I'm not
+
+really sure so I go to the dictionary
+
+and I find the finishings that don't
+
+really help like little bit too
+
+philosophical and I love languages
+
+I love etymology so I said see that
+
+homology and they said that Neal came
+
+from Neal and it from Latin and it means
+
+the nothing the concept of nothing well
+
+no and none which are other words that
+
+see they're pretty similar and we use in
+
+other languages mean the lack of things
+
+and I thought that is cool but I still
+
+don't get it so I went to the source of
+
+all truth Wikipedia and I found the list
+
+of words that mean zero in English and
+
+Neal and no were there was I oh that's
+
+cool duck also is there so you can
+
+technically say zero typing and it is
+
+fine
+
+so anyway Neal is a kind of zero that
+
+that's one nail is after all and when
+
+you think about zero before we start
+
+talking about what is zero and go I
+
+wanted to talk a little bit about the
+
+history of now so the history of nail is
+
+quite interesting because it starts with
+
+someone that we all know and appreciate
+
+Tony Hoare he wrote communicating
+
+sequential processes we we all have read
+
+right anyway it is the basically the
+
+book that said the basis for what it
+
+could become later on the concurrency
+
+features that we haven't go both go
+
+routines and channels those the bases
+
+are from here so you know Tony Hoare
+
+kind of an important person for the NGO
+
+community and then he also created nail
+
+he create nail in a go w in 1965
+
+basically added two different things to
+
+the language to logo they added both
+
+records which we call structs and
+
+references we which we call pointers and
+
+as soon as he was done
+
+he decided oh let's anneal why not it is
+
+easy to implement and during one of his
+
+talks that I recommend you watching it's
+
+called no reference the billion dollar
+
+mistake says that it was actually not
+
+such a good idea and I mean he created
+
+it right and he says it is a huge
+
+mistake billion dollar mistake that's a
+
+lot of money and still I cannot disagree
+
+with him at least in it comes the
+
+context of go but I understand that if
+
+the first time you see now it is because
+
+you get a panic or the first time you
+
+see undefined is because it's not as
+
+function or the first time you see a
+
+pointer in Java is because there's a
+
+nullpointerexception
+
+you are not happy and that you associate
+
+Lai nil to panic then we all know panic
+
+Lisa fear and fear let's the functional
+
+programming and this is a joke this is a
+
+joke but there's actually a little bit
+
+of truth in this statement because if
+
+you think of the functional programming
+
+they actually avoid having nail pointers
+
+by using other things like monads option
+
+types or other kind of different
+
+constructs that allow you to not have
+
+nail and they're really good I actually
+
+love functional programming I gave a
+
+talk dot go in Paris last year which is
+
+functional go it is not functional
+
+always functional go with a question
+
+mark and the answer is thanks but no
+
+thanks
+
+you should not do this this is
+
+definitely a bad idea but I actually
+
+learned enough to basically implement
+
+monad and go at the maybe Mona and it
+
+did not make it so much better and I
+
+thought it was because maybe known ads
+
+were not as good as I thought they were
+
+but now I understand that it is because
+
+nail is powerful enough and go as it is
+
+so yeah there's many ways of dealing
+
+with these kind of problems but go has
+
+nail and nail is the way to deal with
+
+things and go so let's see how it
+
+actually works ok so we said nail zero
+
+what has your values we talked about the
+
+mobile timing go right like if you
+
+declare a variable a user give it a
+
+value it will have a value will never be
+
+undefined it will have the value which
+
+is the zero value of the type so if you
+
+have a boolean or a number or string it
+
+is pretty obvious false 0n t string but
+
+if you have a pointer you can l have
+
+slices you can nail you get maps you can
+
+do channels functions and interfaces you
+
+can nail so Neal it's kind of important
+
+it is the zero value of most of the
+
+types in go after all so let's try to
+
+understand a bit better what it is oh
+
+and by the way for a struct this your
+
+value of a struct is simply a strug that
+
+has every single field it's zero value
+
+so if we have in string and slice you
+
+will get 0 empty empty string and now so
+
+we see that the value of nail is 0
+
+keine but what it is type it is a
+
+pointer it is a slice it is a map so I
+
+went with the go specs specification and
+
+which is a great document and you should
+
+all read I think that it is surprisingly
+
+easy to read and every single time you
+
+read it you will learn probably
+
+something and it says at some point
+
+unless the value is the particular
+
+identifier now which has no type what
+
+nail has no time ok so it is not like
+
+other 0 values we have false has a type
+
+in its boolean empty string and has also
+
+type even 0 that does not really have a
+
+type it will actually have a type we'll
+
+say it's int the compiler will change
+
+that 0.05 for 64 but nail will just not
+
+compile this really not type so that is
+
+surprising okay so we don't have a type
+
+we keep on reading about it and I kept
+
+on reading on the documentation of the
+
+built-in package with all the predefined
+
+things are like int I boom and now and
+
+it says the nails are pretty close into
+
+fire that represents the zero value for
+
+pointers channels funks interface maps
+
+and
+
+DICE's cool we know that but pre
+
+declared into fire I thought Neil was a
+
+keyword it is not a keyword interesting
+
+these are the keywords and go there's 25
+
+of them unless you come the ones are
+
+secret so what is going on if Neil is
+
+not a keyword what is it well it is
+
+something that you can redefine and you
+
+should never do this this is a really
+
+bad idea but the code will compile if
+
+you want to make it as a joke I
+
+recommend putting inside of dr. go at
+
+the end right after package is the
+
+perfect place to have it anyway you
+
+should never do this but it is doable is
+
+the pretty client afire not a keyword
+
+great so what does your values after all
+
+we have all of these types all of these
+
+kinds of types let's see for every
+
+single one what does it mean to be zero
+
+for pointers we need to understand for
+
+what a pointer is and a pointer is
+
+simply something that points to an
+
+address in memory that's it and it's
+
+like C or C++ if you've done any of
+
+those languages with a couple
+
+differences one of them is the fact that
+
+we don't have pointer arithmetic which
+
+means that you can now get an address of
+
+a variable at four and see what happens
+
+you can actually do it with a package
+
+name and save for a very good reason and
+
+you should not use it unless you really
+
+need to and then also there are the
+
+differences we have a garbage collection
+
+so what is the meal pointer something
+
+that doesn't point to anything that's it
+
+cool and is this your value easy pretty
+
+simple
+
+what about slices this is a little bit
+
+more interesting because slices when
+
+they're new so a slice has actually
+
+three values it has a pointer to a
+
+backing array and then a length and a
+
+capacity so if you imagine that we're
+
+creating a slice of five bytes
+
+we're actually pointing to a backing
+
+array that has five points in it and
+
+then we know that the capacity and the
+
+length are both 5 if you subs I've
+
+removed that slide today if you yourself
+
+slice it you get something different but
+
+the Neels lies it is simply advice
+
+that doesn't have a backing arraign
+
+that's it length and capacity are still
+
+there and there's zero but there's just
+
+not backing array cool maps channels and
+
+functions are pretty much of the same
+
+style and the interesting thing is the
+
+maps and channels they actually used to
+
+be pointers if you if you see on github
+
+you go back to 2008 you will see that
+
+maps have starred map and channels have
+
+starch and but we change that the
+
+implementation is still the same behind
+
+behind the hood so it's still a pointer
+
+and saying for functions so they're just
+
+simply something that points to
+
+something what is that something this
+
+talk is not long enough to get in detail
+
+so it points to a cloud the
+
+implementation and what is the nail a
+
+nail Channel and a map or a nail
+
+function it is a pointer without the
+
+cloud that's it it's not initialized and
+
+now we're going to talk about interfaces
+
+and this is where it starts getting
+
+interesting because there is something
+
+that come that can shock some people at
+
+the beginning where they discover new
+
+interfaces an interface is not a pointer
+
+an interface has two components an
+
+interface has a type the concrete type
+
+of value that is inside and also the
+
+value so if we have with declare a
+
+variable of type stringer which is an
+
+interface from the phone package we'll
+
+have the concrete type we have not given
+
+any suitable male and the value will be
+
+nil so we compare that to nail
+
+everything works everyone's happy nail
+
+nail April's nail good now we have a
+
+pointer to person and that pointer to
+
+person is now person satisfies the
+
+stringer interface obviously and we put
+
+that nail pointer inside of a stringer
+
+interface so now the concrete type is
+
+pointer to person but the value is now
+
+and that is not now pointer to person
+
+nail is not now and this is something
+
+that seems confusing
+
+and it might seem like it is something
+
+we don't really need but still we do so
+
+when it's new not now is that a thing
+
+and it is let's see this code that I
+
+totally wrote just for this and I don't
+
+think that anyone could write this and
+
+if you write it don't do any that
+
+anymore where I'm pretty clearing an
+
+error and that error will be a pointer
+
+that it turns happens to be nil and I'm
+
+returning that that error what happens
+
+here well I'm error at that point is a
+
+nil pointer of type pointer to a pointer
+
+to do error but when we return it we're
+
+wrapping it in an interface and that
+
+nailh pointer becomes an interface that
+
+has an eel pointer inside and that is
+
+not a male interface anymore so when we
+
+compare it to nil it will say look is
+
+not nil and if you print it you will get
+
+nail so do not declare concrete error
+
+variables it is a bad idea in general
+
+you should try to avoid it another case
+
+that happens and I've seen this for real
+
+or github it is you return a concrete
+
+pointer to error rather than the error
+
+interface and this code totally works
+
+you're returning a pointer you compare
+
+that pointer to nil so you're comparing
+
+a nail pointer to the nil value of your
+
+pointer and they're indeed equal so
+
+everything works later on maybe ages
+
+ages later someone as that wrap do
+
+everything is doing just calling that
+
+function what's happening now well do
+
+still returns that pointer to the error
+
+but now wrap two wraps it inside of an
+
+interface so your code is broken so do
+
+not return concrete error types it is a
+
+bad idea so keep in mind that Neil is
+
+not Neil for some kinds of mail and the
+
+important thing here is to think about
+
+the fact that Neil is not just nail and
+
+nails lies in it is a nail flies which
+
+is different to a nail pointer which is
+
+different to a nail interface so if you
+
+want you could totally call them
+
+something different and you could call a
+
+nail
+
+interface none and I wonder what go good
+
+look like if we had that it could be
+
+maybe a little bit less confusing or
+
+maybe a little to be more confusing I'm
+
+actually not sure she disagrees so yeah
+
+we should keep it as it is great so
+
+we've seen the cans of nail and what do
+
+they mean we've seen that pointer just
+
+don't point to not anything slices not
+
+don't have back in array maps channels
+
+and functions are not initialized and
+
+finally interfaces don't have any value
+
+at all
+
+even Neil pointers so rope access make
+
+this euro value useful and he's also one
+
+of the designers of go so one good hope
+
+that the zero values of go are useful so
+
+let's see how that is true so how are
+
+these useful with let's start with
+
+pointers a pointer is completely useless
+
+right you can't do anything with it
+
+everything you can do is compare it to
+
+now and it will say true if you try to
+
+dereference it which is the only thing
+
+you can do with a pointer it will panic
+
+ok let's write some code this is not an
+
+interview so don't panic we have a tree
+
+binary tree and we want to implement
+
+some ok and I'm pretty sure that you've
+
+all seen some of this code basically
+
+what you want to do is just go through
+
+the route and go through the trees and
+
+all that stuff so if you ask me to write
+
+this I could probably write some code
+
+like this I start with the root and then
+
+I see if there's something on the left I
+
+go through the left something on the
+
+right I go to the right and these
+
+thoroughly works but there's a couple
+
+things that I don't like one of them is
+
+the repetition of code if there is
+
+something here do something here and the
+
+other one which is a little more serious
+
+is that the nail pointer to tree some
+
+will fail it will you will get a panic
+
+so let's see why is this and can we fix
+
+it let's imagine that we have a person
+
+which is a struct and we define a
+
+function that receives a pointer to
+
+person but it doesn't use it at all why
+
+good that panic same thing for methods
+
+why good that panic you're not using the
+
+pointer you know the referencing it it
+
+will just work and this is different to
+
+many languages this is different to Java
+
+this is different to C++ so it's
+
+something that we might not think about
+
+but this totally works
+
+so using that let's see how we can
+
+improve our record keeping in mind new
+
+receivers are useful we can write this
+
+code and this code everything we're
+
+saying is well if we get the Neal tree
+
+which happens to be the default value of
+
+pointer to tree we return the zero value
+
+for the int which is zero right this
+
+looks much better
+
+what if you want it to the string well
+
+the zero value for string is empty
+
+string otherwise you just put the rest
+
+together what if you want it to define
+
+find a value in that tree well same
+
+thing you just return false Critias the
+
+default the zero value for a boolean so
+
+you can imagine how all of a sudden you
+
+can make your types useful so nil is
+
+useful and whenever it is possible you
+
+should try to make your your default
+
+values which might be new useful and if
+
+not you should define a new function
+
+that will return something that is
+
+actually useful right let's talk about
+
+slices our slice is useful yeah they're
+
+awesome
+
+actually you can do everything with them
+
+absolutely anything the only thing you
+
+can do is get an element from a slice
+
+from a nail slice why cuz it's nail no
+
+because it's empty
+
+there's nothing inside so obviously you
+
+cannot get anything from it but you can
+
+append into it and this is actually very
+
+normal
+
+idiom in girl will you're going to be
+
+writing code you're going to be
+
+appending stuff to to us lies you don't
+
+need to really clear how long it's gonna
+
+be
+
+you start with nil and that's it and
+
+some people might be oh no but this is
+
+this is there's not performing enough
+
+and it turns out that ID is a Greek
+
+Empire completely with that because ya
+
+when you start doing this code where
+
+you're appending and printing the
+
+important thing is the capacity at the
+
+beginning is 0 because the slice is now
+
+and then we we need to allocate
+
+something size 1
+
+then we add one actually we double it
+
+then we double it again then we double
+
+it again and so on which means that the
+
+cost of adding elements is actually not
+
+that bad if you are adding one thousand
+
+elements you're going to have ten
+
+reallocations if you prove with people
+
+are that those ten allocations are
+
+slowing down your program then I'll be
+
+happier than to make before that your
+
+sneeze license there in general fast
+
+enough let's talk about Maps Mansur kind
+
+of like slices you can do most of the
+
+things with them you can actually check
+
+if something is in a map but you cannot
+
+add elements to the map because it is
+
+not initialized sorry so are they useful
+
+well let's imagine that we had a
+
+function like this you get you don't
+
+need to understand the whole code
+
+everything this is doing is you give it
+
+a URL you give it a bunch of headers
+
+instead of a map and it will return a
+
+HTTP request sending that request to the
+
+URL with all the headers that you gave
+
+and I'm going to say I'm going to send a
+
+request to Google calm with go and go
+
+for as user agent because why not and
+
+that works what if you wanted to send it
+
+with no headers you could send this and
+
+this could work but better than this you
+
+can send this because now is a
+
+completely valid value if everything
+
+you're doing is reading from it
+
+iterating words getting keys work and
+
+it's the word so in general if what
+
+you're using is a read-only empty map
+
+now it's completely useful and it's
+
+shorter any go we like short things
+
+let's talk about channels and this one
+
+is my favorite probably and I totally
+
+copied from Dave Jenny but it is I can
+
+have modified it with without your
+
+permission I hope you don't mind anyway
+
+Neal channels you cannot do anything
+
+with them right if you try to send
+
+something it blocks forever if you try
+
+to receive something blocked forever if
+
+you try to close that it panics so
+
+nothing works
+
+coding time imagine that I asked you to
+
+write this function merge that given two
+
+channels it's going to be reading from
+
+those two channels and sending the
+
+result into an out channel in from a I'm
+
+going to be receiving ones and from
+
+being gonna be receiving choose and so
+
+in out you should be seeing ones and
+
+choose go I read this code select
+
+statement for the win
+
+easy cool so everything and then I'm
+
+doing is if I receive something from a
+
+send it to out I receive something from
+
+B so NIC to out and I run this code and
+
+I get chosen once but I get mainly zeros
+
+and why is this because it turns out
+
+that when I close channel if you receive
+
+from it it will not block it will just
+
+give you a zero forever so all of a
+
+sudden what we're doing is we're just
+
+getting choose on ones
+
+then both channels close and now we're
+
+just receiving zeros all the time and
+
+sending them down to out so let's fix
+
+that instead of having this code we're
+
+going to check if the channel is closed
+
+or not and we could do that with a V
+
+comma okay syntax so we're going to say
+
+you know we're gonna have this boolean
+
+that says is a closed is be closed and
+
+we're gonna update it whenever the
+
+channel closes and then on top and I'm
+
+sorry if you cannot read it on the back
+
+I did it as big as possible but this is
+
+a very long room we have those balloons
+
+and we iterate for as long one of those
+
+channels open we run it it works and
+
+then it panics
+
+so close what's going on deadlock
+
+because our receiver once we close both
+
+channels is still waiting for something
+
+to happen we need to close out once
+
+we're done we need to close that channel
+
+cool we add add we run it it works
+
+whoo by the time we ship it obviously
+
+who tests so we ship it
+
+and it's in production and someone calls
+
+I was like hey so that code
+
+yeah the data center is on fire oops so
+
+how do you test things obviously you are
+
+logging so what I'm going to do is I'm
+
+going to add a log line every single
+
+time we see the channel is closed I run
+
+this again and I see these closed B is
+
+closed B is closed 1000 times B is
+
+closed
+
+and finally a is closed so what is
+
+happening is that we're reading from
+
+that closed channel continuously that
+
+orange case were we reading from B as
+
+soon as B is closed that case will never
+
+be blocking which means that we're
+
+actually in a busy loop going around
+
+like crazy and heating up our CPUs until
+
+our data center gets on fire
+
+bad thing so can we switch off a channel
+
+that is what I want to do I don't want
+
+to close it I want to be like you done
+
+stop it
+
+well we have nail channels and nail
+
+channels when you try to receive from
+
+them it blocked forever which is exactly
+
+the opposite as closed channels so what
+
+if instead of saying oh the channel is
+
+closed we set the channel to nail now
+
+what we're doing is we are deactivating
+
+that channel and that case statement
+
+will never ever be active again so now
+
+with this code if we run it it works
+
+party time this is my favorite go for by
+
+the way I'm very very excited about
+
+Renee's French talk tomorrow I want to
+
+see this new gophers but this for so far
+
+it is my favorite one okay so use nail
+
+channels to disable select cases
+
+functions I'm going to go pretty fast on
+
+this because they're here in my opinion
+
+for completeness if you have a struct
+
+that has a feel of type func
+
+which is totally possible because
+
+functions are first class objects and go
+
+then what is the zero value for it does
+
+it mean if we don't have a zero value
+
+for functions does it mean that then we
+
+don't have zero values for structs with
+
+functions
+
+that is not good so and obviously the
+
+only good solution is having meal but
+
+also it can be used as an indication of
+
+default value so in this code for
+
+instance what I'm doing is I'm passing a
+
+function that I'm going to use to log
+
+stuff logger and if logger is nil which
+
+can be new I would just say I'll just
+
+print with with lock printf and this is
+
+something that you can do and I've seen
+
+many libraries doing that so nil for
+
+funks can be used to imply default
+
+values and I want to finish with
+
+interfaces and interface is interesting
+
+because how many of you have written
+
+this line of code yeah we all have here
+
+in this line of code and that is an eel
+
+interface so Neal interface is the most
+
+useful value ever and it actually means
+
+everything went fine which is the
+
+opposite of panic so an Anil interface
+
+is actually a great thing to see but why
+
+is it that an eel pointer and an eel
+
+interface need to be different why don't
+
+we just unify it and an eel pointer is
+
+an eel interface and that's it and we're
+
+done with it well let's imagine that we
+
+have this interface summer it is very
+
+hard to we have summer which is an
+
+interface with some method that returns
+
+an integer kind of like the tree so we
+
+can use an eel pointer to tree instead
+
+of a summer value and that is toy valid
+
+and it is valid even though T is nil
+
+calling some will return zero which is
+
+exactly the valuable one so an eel
+
+pointer can be a totally valid value for
+
+an interface if we define something
+
+which is a slice that had the same
+
+method and it is that the sum of the
+
+slice using an eels lies we can still
+
+satisfy the interface so Neal values can
+
+satisfy interfaces in an interface if we
+
+if we have a function that is receiving
+
+an interface we should not care about
+
+whatever value is behind we just care
+
+about the fact that those methods are
+
+there so the fact that behind is a nil
+
+pointer and nails lies or even an eel
+
+we don't really care we can also use it
+
+to have it as default values kind of
+
+like functions and you can imagine here
+
+I have a thunk to sum that simply checks
+
+if the summer that I receive is nil or
+
+not if it's nail
+
+I will just say zero because whatever it
+
+is is zero and I'm fine
+
+otherwise I will actually call the
+
+function and this is something that we
+
+actually do very often where the Neel
+
+interface implies just go with the
+
+default thing we can do it but so we can
+
+call this function with any of those
+
+values the last one is actually nil and
+
+it was your work but how many of you
+
+have seen this line this line of code
+
+the last nail it actually means use the
+
+default behavior for HTTP package which
+
+is to use the deform marks so you could
+
+send your own handler if you want to but
+
+you don't need to so you're saying I'm
+
+saying nail use the default value so you
+
+can use nail interfaces to also signal
+
+default values and also to signal that
+
+the error is not is nail so we're happy
+
+great so I hope you agree with me the
+
+nail is useful and we've seen that nail
+
+point nail pointers are very useful and
+
+nail pointers nail receivers are totally
+
+valid and whenever is possible you
+
+should try to make your nail pointers
+
+useful we've seen that slices are just
+
+perfectly valid empty slices maps are
+
+perfectly valid read-only Maps channels
+
+are not useful but essential to some of
+
+the things that we want to do with
+
+concurrency functions are there for
+
+completeness and interfaces are a very
+
+good way to signal things and go like
+
+the full things and error is not known
+
+so I think that Neil is a very important
+
+part of go as we've seen it appears
+
+basically everywhere in the language so
+
+stop thinking about Neil as the error
+
+case the thing that you should try to
+
+avoid
+
+the billion dollar mistake and instead
+
+let's think about the fact that if it's
+
+such an important part of a language by
+
+understanding it and embracing it will
+
+better understand and embrace go thank
+
+you
+

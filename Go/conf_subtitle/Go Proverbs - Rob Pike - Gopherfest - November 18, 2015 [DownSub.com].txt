@@ -1,0 +1,1132 @@
+there we go and okay the technical
+
+content stops now yeah this is a very
+
+different talk I think it's time to
+
+start philosophizing a little bit how
+
+many of you have played the game of go
+
+oh good Lots all right
+
+so people who learn to play go but in
+
+fact in the time I have to give this
+
+talk I can teach the rest of you how to
+
+play not play well but play because it's
+
+a very simple game and the name for the
+
+for the language is obviously the same
+
+as the game and that's not entirely
+
+coincidence although it's more of the
+
+story but the thing about learning the
+
+game of Go is that it's very easy to
+
+learn and really really hard to master
+
+because it's not like most Western games
+
+like chess they're not analyzed by you
+
+don't learn to say well if the person
+
+goes there then I go here and then they
+
+go there earlier here and there it's not
+
+like that there's 19 squared positions
+
+on the board and it just the exponential
+
+is just crazy instead you have to think
+
+about patterns and territory and it's a
+
+very different and much more sort of
+
+holistic thing to think in and it's very
+
+hard to teach us left brain Westerners
+
+how did play go I've known some good
+
+ones but I'm not among them but there's
+
+a principle for teaching it's really
+
+used for pedagogy and it's the idea of a
+
+go proverb and there's a lovely little
+
+book that was translated about 50 years
+
+ago from Japanese into English called go
+
+proverbs Illustrated and just to give
+
+you an idea the flavor of them here's
+
+one the comb formation is alive that
+
+means that that those white stones if
+
+you attack you can actually keep them
+
+alive no matter what black does because
+
+you can always create two eyes don't
+
+worry whether you understand that or not
+
+it's just that's a nice little thing the
+
+comb formation is alive or the
+
+Carpenters square becomes Co that's a
+
+really nice little proverb because that
+
+that black the black stones in this case
+
+if you attack them white and play
+
+perfectly you end up with a pattern
+
+called ko which is a very strange that's
+
+sort of one weird thing in the game that
+
+you have to understand beyond the
+
+trivial stuff but you see these have a
+
+kind of poetic sort of nice feel to them
+
+and they but they carry a lot of
+
+information
+
+for people learning how to play you when
+
+you see this thing on the board you know
+
+oh I know what happens if we if I have
+
+this position because I can create a Co
+
+and I may may or may not be a good thing
+
+so I was wondering can you have go
+
+language proverbs do we have can we
+
+think about teaching go or maybe
+
+understanding or explaining go with a
+
+similar kind of Eastern philosophy
+
+approach and I realize this is very very
+
+wet stuff but bear with me because in
+
+fact there is already one proverb you
+
+all know don't communicate by sharing
+
+memory share memory by communicating I
+
+hope we got that the right way around I
+
+usually do and and if you think about it
+
+this is a proverb right it's a little
+
+tiny pithy statement slightly poetic
+
+it's got a sort of repetition in a way
+
+but really understanding what that says
+
+is a fairly big deal because you have to
+
+understand what you mean by sharing
+
+memory by communicating well you mean
+
+passing on a channel the address of a
+
+data structure or an object and also the
+
+idea that when you send that object over
+
+a channel if you don't keep the pointer
+
+then you don't have access to it anymore
+
+and so safe concurrent or even parallel
+
+calculations sort of our inherent in
+
+this very model and so it's actually a
+
+lot behind there it's it's a nice rich
+
+little thing and I was thinking well
+
+maybe there's more of them so I tried to
+
+come up with a few of them and I'll go
+
+through my list and maybe there's more
+
+you guys can think of so here's another
+
+one concurrency is not parallelism I
+
+think most of you know if you've seen
+
+the talk I gave it was a bike actually
+
+was one who invited me to give that talk
+
+that concurrency and parallelism are
+
+often confused by beginners they think
+
+the same thing but at least the way that
+
+you talk about them in the NGO community
+
+they're very different and important to
+
+keep separate concurrency is a way of
+
+structuring your program to make it easy
+
+to understand and scalable and
+
+parallelism is simply the execution of
+
+multiple go routines in parallel it's
+
+it's somehow somewhat less interesting a
+
+concept and concurrency but there's
+
+there's a lot in those four words but
+
+it's actually a lot to understand here's
+
+another one channels orchestrate mutexes
+
+serialize a lot of begin
+
+to struggle with the idea of when do I
+
+use a mutex or a sink Condor an atomic
+
+value or when do I use a channel and a
+
+go routine and you know all this stuff
+
+and one way to think about that is that
+
+mutexes are fine-grained and very small
+
+and they tend to serialize execution if
+
+you put a mutex on a variable then only
+
+one thing can ever happen at time to
+
+that variable but when you and that's
+
+often very important and sometimes
+
+that's exactly what you want but in the
+
+big picture of the whole program what's
+
+going on go routines and channels give
+
+you a way to sort of structure the
+
+program in I'm using the word
+
+orchestrate here to arrange how the
+
+pieces work and to generate this sort of
+
+large-scale service or whatever it is
+
+you're building the sort of select for
+
+loop that everybody knows using channels
+
+to orchestrate your program is sort of
+
+the canonical example the bigger the
+
+interface the weaker the abstraction now
+
+if you come from Java everywhere
+
+everything is bigger you use you use you
+
+think of interfaces typically as having
+
+lots of methods and people talk about
+
+how unusual it is in go to have
+
+interfaces that are not declared to be
+
+satisfied they're satisfied implicitly
+
+but that's actually not the most
+
+important thing about gos interfaces the
+
+really most important thing is the
+
+culture around them that's captured by
+
+this proverb which is that the smaller the interface is the more useful it is. Right? 
+
+If the i/o dot Reader IO dot
+
+writer and the empty interface are the
+
+three most important interfaces in the entire ecosystem and they have an average of two thirds of a method right. So if you think about the way that a java guy would build it he'd have the interface like this and it you know it would only generalize a little bit
+
+there might be two implementations of it
+
+how many implementations of IO read or
+
+other I've written programs with 20 implementations of IO dot reader inside right and that's a really powerful structuring plane so this is a really a go specific idea here that we want to make little interfaces so that we can build components that share them 
+
+---
+
+Make the 0 value useful this came up earlier
+
+today I think this is something that
+
+early go programmers don't appreciate
+
+that you really want to try to arrange
+
+that the API to your package have the
+
+zero value of all the types inside it be
+
+useful right out of the box
+
+and some examples in the standard
+
+library that show how important that is
+
+are things like the bytes buffer or sync
+
+mutex where you just can put one of
+
+those things inside your structure not
+
+even allocated just just or declare a
+
+variable of that type and just use it
+
+you don't have to call an aid function
+
+of to think about it and it matters even
+
+more when you're building complex data
+
+structures that have these things inside
+
+them because be sorry because the bytes
+
+buffer is valid as a zero value is a
+
+valid buffer ready to use if you put
+
+that inside another structure and you
+
+make all the pieces other parts of it
+
+also valid zero bytes that buffer
+
+doesn't break that and so it's a way to
+
+structure your whole data to make sure
+
+that the programs are much easier to use
+
+now of course there's nothing wrong with
+
+calling a constructor it's a perfectly
+
+good thing to do it's often necessary
+
+but when you can avoid it and make the
+
+program nicer it just means there's less
+
+API there and that's always a good thing
+
+unless you're a Java programmer this is
+
+this is one that may be a little
+
+contentious but 
+
+## The empty interface says nothing 
+
+it actually carries no
+
+information just yesterday or the day
+
+before I saw something of the bug where
+
+they they'd written a piece of code a
+
+function argument was an empty interface
+
+and so they called it and just work and
+
+they refactor some code and the program
+
+broke mysteriously because it couldn't
+
+be statically checked because the
+
+function with the empty interface
+
+argument didn't force any guarantees on
+
+the caller you might as well program in
+
+Python if you're doing that so the empty
+
+interface is also something you see in
+
+almost every question on Stack Overflow
+
+about go there's always an empty interface I'm doing this and it might be like a map of string to empty interface which is the least useful data structure
+
+there is because it's a map of night of names to meaningless objects right so
+
+when you're programming and you have an
+
+empty interface think very hard about
+
+whether it's really what you want or whether there isn't just a little
+
+something you could put into an interface with an actual method that
+
+really is necessary to capture the thing
+
+you're really talking about sometimes
+
+you absolutely need it there's no
+
+question about it. **But it's way overused especially by beginners** 
+
+## Gofmt's sytle is no one's favorite, yet gofmt is everyone's favorite
+
+
+
+go func
+
+is of course a big deal in the go
+
+community and this
+
+ a lot of people say I
+
+won't go especially beginners I want to
+
+move the braces or why is there white tabs at space or
+
+whatever **who cares shut up** gofmt style go from style is
+
+nobody's favorite the things the way
+
+that it formats isn't even the way
+
+Robert Griesemer likes code to look and he wrote the program because we argue about it right and 
+
+But the thing is that if you ask experience go programmers their favorite thing about go a
+
+significant fraction maybe even majority will say their favorite feature is gofmt yeah I don't like how it formats
+
+but I really like that it formats so
+
+## A little copying is better than a little dependency
+
+when I first went to Google one of the first things that was told to me that scared me was
+
+somebody who said we really care most
+
+importantly about **code reuse** and I
+
+thought that was a weird thing to say
+
+and then I found what they meant was you
+
+if you could avoid writing one line by doing a number
+
+include you should do that and I learned that that was a very very bad idea
+
+and Google internally is still suffering
+
+from that decision but you can actually
+
+make your programs compile faster be
+
+easier to maintain and simpler if you
+
+**==keep the dependency tree really really small==** 
+
+and one of the ways you can do
+
+that is sometimes that you know what 
+
+I don't need that whole library all I need is these three lines of code that I can just copy and it's fine
+
+and there's even examples of that in the
+
+standard library like `strconv` 
+
+is print function to make it so you can
+
+tell whether a thing was printable or
+
+needs to be escaped under certain
+
+conditions and one way to get that is
+
+doing import the Unicode package and say
+
+is it you know does this match the is
+
+print category but that involves me
+
+something like 150 kilobytes of data
+
+that's a huge dependency for such a
+
+trivial question and so Stewart comma
+
+actually has its own implementation of
+
+of is print which is tiny it's about
+
+five lines of code ten lines of code and
+
+that saves all that dependency overhead
+
+but then of course there's a test so
+
+that every time store come is tested it
+
+guarantees of the Unicode and store
+
+compactors agree on that definition the
+
+test has a Unicode dependency but the
+
+package doesn't and that's a really good
+
+example of making code more compact and
+
+less dependent on on other pieces
+
+**don't be afraid to copy when it makes sense** 
+
+## Syscall must always be guarded with build tags
+
+
+
+this happened today actually then
+
+I wrote this a while ago but somebody
+
+come was complaining that the syscall
+
+needed to be changed because of a
+
+problem it wasn't portable between two
+
+different versions or two architectures
+
+and I you know **==syscall isn't portable that's the point it's it's a system-specific package and==**
+
+ if you import this call into your file your package you you must have a build tag for the particular
+
+architecture and operating system that
+
+sis call implication is valid for if you
+
+think you have a portable thing you're
+
+using the wrong package you should be
+
+using OS or something else you should
+
+always **guard your syscall uses with build tags** so syscall mice always regarded with
+
+build tags not very poetic but it works
+
+here's another one
+
+## Cgo must always be guarded with build tags
+
+
+
+ for exactly the same reason if
+
+you're calling C God knows what it does
+
+right under the covers it's very very
+
+non portable I mean I know we think of C
+
+is a portable language in the old world
+
+but it's really not and the open source
+
+community has made sure that it's become
+
+less portable over time and so if you if
+
+you you see go you should have a build
+
+tab to make sure that it the C go you're
+
+calling in is protected and will only be
+
+invoked on the guy it maybe there's
+
+somebody grabs your package and builds
+
+it and it fails to build because the
+
+built tanks don't work that may be a
+
+good thing because they may have had a
+
+binary that built but didn't run because
+
+a C go dependency isn't actually useful
+
+on that computer or even worse doesn't
+
+work very well and breaks here's another
+
+## Cgo is not go
+
+
+
+one C go is not go a lot of people early
+
+in the early days of Cgo appearing
+
+would write blog posts about one of
+
+their favorite features of go is how
+
+easy it was to connect to C and I think
+
+that's a **trap** because sometimes you have
+
+to there's no question there's
+
+definitely fantastic efficient or you
+
+know expansive packages out there that
+
+really deserve to be used rather than
+
+rewritten but I'll confess I've actually
+
+never used C go I've never wanted to
+
+I certainly use programs that have it
+
+but I've never actually written a
+
+seagoing vacation myself except in tests
+
+because I think we haven't in a universe
+
+where the we
+
+understand the memory we have safety we
+
+have correctness we have stability we
+
+have garbage collection you puts ego in
+
+all those things go at the window you
+
+know 90% of the time inside Google when
+
+someone says my program crashes please
+
+help me or runtime corrupted it turns
+
+out it's a cgo or a swig problem and not
+
+the Google the go code that's causing
+
+the problem that didn't work 
+
+## with the unsafe package there are no guarantees
+
+if your code the other 10% have unsafe I
+
+mean it just says it a lot of people use
+
+unsafe and then complain when their code
+
+is imported all or changes after a
+
+release or something in fact there's one
+
+guarantee because we were too afraid to
+
+break it but I'd like to break it people
+
+use the unsafe package to get at things
+
+like string headers and slice headers
+
+which means it's very difficult to
+
+consider changing the layout of string
+
+headers and slide setters even though
+
+we'd like to and maybe one day we will
+
+but then we'll break all those programs
+
+that use unsafe to get at them and tough
+
+to them don't use unsafe unless you're
+
+prepared to have your program break one
+
+day 
+
+## clear is better than clever 
+
+now so far all the Proverbs I've shown you have
+
+been sort of general mostly general sort
+
+of programming things in about go and
+
+you might say that this one is actually
+
+about programming in general you should
+
+always be clear not clever but there are
+
+languages where cleverness is considered
+
+a virtue you know the more compact the
+
+code is the tighter it is the more it
+
+uses built-in facilities the better 
+
+go doesn't work that way we don't like to
+
+you know it's especially when you're
+
+learning go out of the box you should be
+
+thinking about **writing simple clear code**
+
+**rather than trying to make the cleverest**
+
+**densest stuff** you can and that has a lot
+
+to do with maintainability stability the
+
+ability for other people to read your
+
+code things like that so it's a
+
+philosophical point but it really is
+
+part of the Go philosophy root
+
+## Reflection is never clear
+
+
+
+another thing you see on stackoverflow a
+
+lot is people trying to use reflect the
+
+winning way it doesn't work it doesn't
+
+work because it's not for you right but
+
+==**very very few people should be playing with reflection**== 
+
+it's a very powerful, but very difficult to use feature. It will it has only runtime checks this the compile time is very little checking going on and the code is utterly ==**impenetrable**==(令人费解的) I've probably written as
+
+much reflection code as almost anyone
+
+can go and I still hate it and 
+
+==**I think we should encourage beginners to step away from using the empty interface and step away from using reflection and use the language proper**== 
+
+because they they don't need to use these things nearly as much as they think they do
+
+## Error are values
+
+
+
+errors our values this is another one
+
+again beginners struggle with why do I
+
+have to have if urn unequal kneel all
+
+the time well it's because you're not
+
+programming you're just writing code
+
+they're not the same thing if you you
+
+may know I wrote a blog post about a
+
+year ago um where I showed a program in
+
+Japan that it was really complaining
+
+about this that he just wasn't writing
+
+programs he wasn't thinking about errors
+
+as values and programming them to to
+
+good effect so he could write you know I
+
+essentially abstract the air-handling
+
+away and make his program really pretty
+
+and clear and easy to understand and too
+
+often people just write if we're not
+
+equal Neil and I think beginners to go
+
+who maybe have been influenced by
+
+thinking of errors as an exception or
+
+you know some other making some other
+
+control structure like try catch they
+
+think of that that you just substitute
+
+try catch for if are not equal nil but
+
+you can't we program a try-catch because
+
+it's a control structure it doesn't it
+
+doesn't work 
+
+but **==errors are just values==**. you can write code, you put in for loops, you can store them in variables you can cache them, you can put them in a map, you can send one to your mother whatever you want 
+
+there's just they're just values
+
+## don't check errors handle them gracefully
+
+don't just write if err equals no return thing 
+
+think about whether you should be doing something with that error 
+
+decorating with more information or you know it should you
+
+remember it for later and print it when
+
+you've done some other things a big part
+
+of all programming for for real is how
+
+you handle errors and people are too
+
+quick to jump to just return there up
+
+the tree and forget about it rather than
+
+thinking about how an error should
+
+really work and a really important part
+
+of writing good go code is getting the
+
+error handling right up front of any
+
+program really
+
+but because errors are just values and
+
+go it's easier to program and therefore
+
+easier to do it gracefully this one may
+
+be just totally but I tried I
+
+tried to find the Proverbs around these
+
+and I ended up writing one to cover all
+
+of them 
+
+## design the architecture, name the components, document the details 
+
+what this means is when you're writing a big
+
+big system and go you design it as a
+
+sort of structural thing think about the
+
+components are what pieces work in
+
+parallel and then think of really good
+
+names for the pieces because those names
+
+are going to be what appears on the page
+
+and the go program and if the names are
+
+good the components will be easy to
+
+understand and the design will be clear
+
+inside the structure of your program if
+
+you give if you give good names to
+
+things the programming feels very
+
+natural and but there's a lot of stuff
+
+that you have to explain and so those
+
+are the details you explain but the name
+
+should carry a fair bit of the weight of
+
+expressing the design that you've
+
+architected and the details are just
+
+what goes into filling the gaps for the
+
+stuff that's maybe the fine print on the
+
+engineering diagram
+
+## documentation is for users 
+
+a lot of times people write
+
+documentation they say this is what this
+
+function does and they don't think about
+
+what the function actually is for and
+
+there's a really important distinction
+
+you know this function returns this
+
+right why is it returned now what should
+
+it return instead when you do use it
+
+think about the documentation you write
+
+in for your you know your godot
+
+presentation 
+
+**think of yourself as the user of that package rather than the writer of it** 
+
+so that the presentation that Godot gives is something that the user will find helpful
+
+it's very this is just it's true for any
+
+programming language that the
+
+documentation is really about what users
+
+see but because of the automated
+
+presentation in go
+
+like many other languages nowadays but
+
+also because the documentation is so
+
+lightweight it's not annotated there's
+
+no HTML in or anything it you can just
+
+write prose so think of the user when
+
+you write the documentation be don't be
+
+afraid to explain things so that makes
+
+sense so that's my list there's probably
+
+a lot more I would win it down a lot to
+
+the ones that I thought would be easy
+
+and pithy I don't think of these things
+
+that you guys need to know I think you
+
+know them already but think about them
+
+as ideas that you might explain to
+
+somebody why something you maybe in a
+
+code review or when you're teaching
+
+someone new about something or trying to
+
+stop an argument on Stack Overflow or
+
+whatever but and I'd like to think
+
+there's lots more and maybe you guys
+
+have more you can think of and you know
+
+if you want to mail in to me and maybe
+
+we'll call eight and have a bigger list
+
+maybe this will turn into something that
+
+the community maintains on the wiki or
+
+maybe when you leave tonight this will
+
+be the end of the idea I don't know it's
+
+it's an exploration but if you think
+
+about the Proverbs back to the original
+
+idea of go proverbs from the game they
+
+have to satisfy several criteria to be
+
+the idea of a proverb they actually
+
+really short they have to be kind of
+
+poetic and what not all of the ones I
+
+wrote today are particularly poetic but
+
+some of them are nice because you want
+
+them to think of it sort of like it's a
+
+little saying right it's it's something
+
+that will be memorable you also want to
+
+be general now some other specific about
+
+a particular thing but they're kind of
+
+things that almost every program should
+
+have an example in somewhere of what
+
+that proverb represents it's it's not
+
+you know it's not like you know if
+
+you're if your function has three
+
+arguments it should probably only have
+
+two you know that's really very specific
+
+you want something more general and sort
+
+of more you know silly in a way and it's
+
+possible they they probably should be
+
+more about go than about programming
+
+because there's a lot of opinions on how
+
+to program but one of the things that go
+
+has done I think is create a community
+
+around a certain way of programming and
+
+the idea of these proverbs is to try to
+
+capture some of those ideas that make
+
+programming and go different and maybe
+
+better I don't know but also they might
+
+be contradictory you know
+
+proverbs aren't always I think real
+
+proverbs in the real world you can find
+
+lots that are exactly the opposite and
+
+that's okay too because sometimes one
+
+engineering decision is right sometimes
+
+exact opposite is the right thing but
+
+that's okay so if you think of more or
+
+you have ideas or you want me to stop
+
+talking about it let me know and that's
+
+it
+
+thank you
+

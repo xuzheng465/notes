@@ -1,3 +1,7 @@
+在内存中, 一个字符串存储为一个字节(byte)序列.
+
+UTF-8 编码形式.
+
 
 
 字符串和数字互转
@@ -43,3 +47,10 @@ fmt.Println(len(s)) // 17
 fmt.Println(utf8.RuneCountInString(s)) // 9
 ```
 
+
+
+:taco:  type declaration copies the fields of an type over to a new type, whereas alias copies the fields and the method sets.
+
+
+
+type declaration 更灵活， 适用场景更多， 但有时需要显示类型转换。

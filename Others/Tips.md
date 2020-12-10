@@ -78,3 +78,13 @@ Finder->View->Show View Options
 13、自己做简单实现 
 
 14、不断完善
+
+---
+
+# Disable debug output in Goland
+
+1. Open Help | Find Action...
+2. Type Registry and hit Enter.
+3. Find go.run.processes.with.pty there and turn it off.
+
+Now IDE will **`fold`** those information and will make it look cleaner.

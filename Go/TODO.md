@@ -8,7 +8,7 @@
 
 
 
-## Web
+# Web
 
 
 
@@ -18,6 +18,36 @@
 - [ ] [Building Distributed Applications with Go](https://app.pluralsight.com/library/courses/go-build-distributed-applications/table-of-contents)
 - [ ] [GORM: An Object Relational Mapper for Go](https://app.pluralsight.com/library/courses/gorm-go-object-relational-mapper/table-of-contents)
 - [ ] [Build an Asynchronous Logging Library with Go](https://app.pluralsight.com/projects/build-asynchronous-logging-library-with-go)
+
+
+
+# Blog
+
+- [ ] https://peter.bourgon.org/blog/2017/06/09/theory-of-modern-go.html
+
+
+
+https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1
+
+
+
+- [ ] [Go and a Package Focused Design](https://blog.gopheracademy.com/advent-2016/go-and-package-focused-design/)
+
+- [ ] [Standard Package Layout](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1)
+
+- [ ] [Building an enterprise service in Go](https://medium.com/faun/building-enterprise-grade-microservice-using-go-golang-51a4e27ed199)
+- [ ] Go best practices Brian Ketelsen
+- [ ] Hexagonal architecture by Chris Fidao
+
+:heavy_exclamation_mark:
+
+- [ ] https://blog.golang.org/slices-intro official Golang Blog | Go Slices: usage and internals
+
+# Conf
+
+[Go best practices](https://www.youtube.com/watch?v=MzTcsI6tn-0) Ashley McNamara + Brian Ketelsen
+
+
 
 
 

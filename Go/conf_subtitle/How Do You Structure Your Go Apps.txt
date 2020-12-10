@@ -1,0 +1,2248 @@
+hello everyone so quick show of hands
+
+how many of you have ever asked yourself
+
+this question right yeah
+
+roomful of people I expected exactly
+
+that it's a question which people need
+
+to go are very likely to ask
+
+I think but even if you've been doing go
+
+for a while even as an experienced ago
+
+developer I think you still find
+
+yourself coming back to this question
+
+all the time that's certainly where I
+
+have been I have asked this question
+
+myself a lot of times and I've been a
+
+full-time software developer for about
+
+seven years I've only been doing go for
+
+about two years so I still very much
+
+consider myself a newbie not really an
+
+expert and I'm still fairly and sure
+
+about some things I can until now and
+
+the idea for this talk came to me when I
+
+started thinking about a bit more
+
+consciously about the best way to
+
+structure my code because I've been kind
+
+of doing go for a bit and I was like mmm
+
+that doesn't sound quite right so let
+
+lets let's actually dig into this so
+
+there are a lot of questions that I had
+
+and a lot of decisions that I felt like
+
+I had to make about my code should I put
+
+everything in the main package should I
+
+start with one package in an extract out
+
+of packages over time how do I decide if
+
+something should be in its own package
+
+should I just use a framework and be
+
+done with it
+
+and what's the the programming paradigm
+
+for go is there an idiomatic go way of
+
+structuring your apps should I go for
+
+micro services should I stick with them
+
+on a list and how much should I share
+
+between packages should I make them
+
+completely independent or should I maybe
+
+share some stuff so I'm sure a lot of
+
+you have had these or similar questions
+
+and when I was doing my research online
+
+there is some information online not an
+
+awful lot because application structure
+
+doesn't tend to be one of those hugely
+
+discussed topics and usually the focus
+
+is on the design itself like design
+
+patterns but not so much on the where do
+
+I where do my files go on disk kind of
+
+question and then everybody
+
+seems to have a slightly different
+
+answer to that a lot of people have
+
+their own preferences that they stick to
+
+and go as a language kind of leaves it
+
+up to you it doesn't really give you any
+
+hints you kind of start with a blank
+
+page and I think it's fun because we can
+
+experiment to our hearts content and we
+
+can tailor the program and the structure
+
+to our exact needs but it means that it
+
+it might be hard to get started
+
+especially for somebody new to go or for
+
+those who don't necessarily have a seat
+
+background or for those who don't come
+
+from objects or for those who come from
+
+the traditional object-oriented
+
+languages like Java and they expect to
+
+see classes and and go 
+
+why is this important why should we care about
+
+structure I mean end of the day it's
+
+just trivial it's putting files on your
+
+disk who cares right well Dave Cheney
+
+said in his goal on UK 2016 keynote that
+
+if go is going to be the language that
+
+companies invest in for the long term
+
+the maintenance of go programs the ease
+
+of which they can change will be a key
+
+factor in their decision about using go
+
+for their next project and I think
+
+that's very true without a good strategy
+
+applied to your project
+
+you'll find your code is getting more
+
+and more messy over time and with no
+
+structure and typically once you make a
+
+major architectural decision about your
+
+code and you get a few use cases for
+
+that developed it's then really hard to
+
+shift gears so you kind of stuck with it
+
+so I think it's important to consider it
+
+and try and get it right ish from the
+
+start so what's a good structure well
+
+let's try and define that first ideally
+
+it should be consistent across the
+
+project there is nothing worse than
+
+coming to code base and seeing one part
+
+of the app done in one way and then
+
+another part done in a different way and
+
+especially if you're not the original
+
+author and you're just coming to a new
+
+code base you have no idea which one is
+
+the one that you should follow and I
+
+think a good code good code structure
+
+should be easy to understand it should
+
+be easy to navigate and easy to reason
+
+about so you should just make sense
+
+it should be easy to change loosely
+
+coupled it should be easy to test
+
+shouldn't hinder testing in any way it
+
+should be as simple as possible but no
+
+simpler and I absolutely love this quote
+
+it's attributed attributed to Einstein
+
+and I think it just captures the idea
+
+the go way of thinking perfectly so keep
+
+it simple but not simplistic and the
+
+design of your code should reflect
+
+exactly how your software works and the
+
+structure of your code should follow the
+
+design exactly so if we apply the
+
+transitive law to this the structure of
+
+your code should reflect how your
+
+software works you think that's obvious
+
+but how many times you've come into a
+
+project which seems to be structured in
+
+one way but it actually works
+
+in a completely different way and this
+
+is ultimately the holy grail of good
+
+code structure your design could use any
+
+of the paradigms it could be procedural
+
+it could be object-oriented it could be
+
+functional could be concurrent could be
+
+note it could be known it doesn't matter
+
+whatever it is you want your structure
+
+to reflect that design that you've
+
+decided on why is this so important well
+
+your code is your only it's ultimately
+
+your only up to date documentation of
+
+your design of your business logic and
+
+of the language that you use throughout
+
+your project so a good code structure
+
+which isn't diverged from the design
+
+it's critical to make your code
+
+understandable and understandable and
+
+maintainable the TLDR of this I guess is
+
+that good code structure will make your
+
+life easier as a programmer because the
+
+code structure should work with you and
+
+for you not against you and it should
+
+make coding a pleasure I mean if you
+
+have a good code structure coding is a
+
+pleasure because you know where
+
+everything goes and you know where
+
+everything is so how do you get the dot
+
+point well the sad news is that it kind
+
+of comes with practice there is sadly
+
+isn't a little definite instructions
+
+that I can give you to follow but I
+
+thought I could show you a few different
+
+ways in which you could structure your
+
+projects so I didn't want to use an
+
+example
+
+foods and bars because that's not really
+
+what real life is like so I thought
+
+let's use a simple but a more realistic
+
+example so imagine I gave you this spec
+
+for a beer reviewing service and this by
+
+the way has taught me nothing to do with
+
+what was on my mind when I was writing
+
+the talk nothing at all so I want your
+
+app to let users add a beer
+
+I want users to be able to add a review
+
+for a beer and I want users to be able
+
+to list all the beers and list all the
+
+reviews for a given beer and the for
+
+simplicity we will skip updating
+
+deleting and so on and so forth so it's
+
+not a full-blown API it's just a simple
+
+example and on top of that I want your
+
+app to provide me the option to store
+
+data in memory or in JSON files and
+
+again in real life that could be I want
+
+your app to support every sequel store
+
+in a no sequel store for example but for
+
+simplicity we'll just go with in-memory
+
+or JSON files and then I also want the
+
+app to provide me some ability to add
+
+sample data to seed the database and
+
+pre-populated with some beers in some
+
+reviews okay so now that we have a spec
+
+let's think about how we could go about
+
+implementing this let's start with the
+
+most obvious one the flat structure we
+
+could have the following files we have
+
+data that go for the sample data we've
+
+handlers that go for our HTTP handlers
+
+we have main which is obviously main and
+
+starts everything up and then you've got
+
+model for defining our beer in reviews
+
+models and then we've got storage which
+
+defines the functionality of the storage
+
+that you want to provide and then we've
+
+got a file for each of the storage
+
+implementations so we've got one for
+
+Jason one for a memory nice and simple I
+
+think that structure is great for this
+
+up because it's easy to navigate it's
+
+easy to reason about and I think it's a
+
+great starting point if you just don't
+
+know where to start with your app if you
+
+don't know where to start I'd say go
+
+with a flat structure it can on it flat
+
+structure works really well for smaller
+
+apps and libraries like maybe 10 to 20
+
+business operations it goes well with
+
+the idiomatic go approach because you
+
+keep it
+
+nice and simple you don't overcomplicate
+
+if you don't need to and the one great
+
+benefit of the flat structure is that it
+
+removes any chance of circular
+
+dependencies because everything is in
+
+the main package well that also leads to
+
+some disadvantage of disadvantages of
+
+that because everything is in a global
+
+state so you don't have the option to
+
+black box or separate some things out
+
+everything can be accessed and modified
+
+by everything secondly looking at the
+
+structure can you tell what this app
+
+actually does looking at the file names
+
+tells you nothing about the app you have
+
+to open the files dig through the code
+
+and then piece it all together in your
+
+head and so just to show you what it's
+
+like I do have a git repository with the
+
+demo files and there is a directory
+
+called flat in here where I've
+
+implemented all of this I'm going to
+
+share a link to this online so we don't
+
+have to worry about it for now you can
+
+go through it in your own time if you
+
+wanted to have a look at how it's done
+
+so let's see if we can maybe break this
+
+up into a few smaller packages well
+
+there are of course a few different ways
+
+we could go about that
+
+so let's first try grouping by grouping
+
+code related to a specific function
+
+performed in the app so this approach is
+
+formally called the layered architecture
+
+if you imagine your application having
+
+different layers the the UI or the
+
+presentation layer and then the business
+
+logic and then any external dependencies
+
+or third-party apps third party API is
+
+databases infrastructure all of that so
+
+we could group our code based on which
+
+layer they belong in so if I said to you
+
+words like controllers models views daos
+
+they taxes objects or actions and that
+
+all sounds very familiar right like it
+
+it sounds an awful lot like in classic
+
+MVC and that's a very popular pattern
+
+it's used by a lot of languages and a
+
+lot of frameworks out there
+
+so we could have in our main app in our
+
+example app those three packages
+
+handlers models and storage
+
+so the good thing about this structure
+
+is that it's easy to decide where
+
+everything goes what goes where at least
+
+up until a certain point and it also
+
+discourages you to use global State and
+
+it kind of encourages you to put
+
+relevant things into the same package
+
+the slight problem with that is for
+
+example if you have a variable that is
+
+shared between the layers well which
+
+layer does do you put it in or do you
+
+just duplicate it across layers and
+
+where do you initialize everything does
+
+main initialize the storage and then
+
+passes it into each model or do you
+
+leave it up to each model to initialize
+
+its own storage so that's kind of the
+
+dilemma that you might might be facing
+
+with this and in our case do we have one
+
+file called beardo go for everything
+
+related to beers or do we have one file
+
+one model for a single beer and then
+
+another model file for multiple beers
+
+also in this case if we have one
+
+definition of the beer struct then it
+
+means that everything shares that one
+
+definition and that doesn't that you
+
+apply different contexts to it so to
+
+give you an example when I'm adding a
+
+beer and I use the beer structure it has
+
+a beer ID but when I'm adding a beer my
+
+feeling is that I shouldn't need to
+
+specify the ID like the app should
+
+handle it for me but the struct has it
+
+so as a user I don't know if I need to
+
+specify it or not just by looking at the
+
+struct but then when I get this the
+
+beers I want to I want them to come back
+
+to me with the IDS so that's why we need
+
+the ID in the struct
+
+so the code doesn't really guide you as
+
+a programmer for like which fields you
+
+should use you kind of have to reason
+
+about it and work it out yourself and
+
+then the biggest con about this
+
+structure is that it actually won't
+
+compile so if I switch back to
+
+if I switch back to the demo app and we
+
+go into our layered directory
+
+I've lost the terminal in here but
+
+anyway if you try to do go run main go
+
+it won't actually compile it will tell
+
+you that there are circular dependencies
+
+and the circular dependencies are
+
+between the storage package which uses
+
+the models package for the definitions
+
+of beer and then the models package uses
+
+the storage package to actually call out
+
+to the database so you've got you've got
+
+that nice little loop in there and then
+
+again back to the models and the the one
+
+file for everything
+
+those files can get large over time and
+
+so they may become I'm not very
+
+maintainable at some point this
+
+structure also doesn't really give you
+
+much of an idea much more idea than the
+
+flood structure about what this app
+
+actually does so let's try a slightly
+
+different approach let's try to break up
+
+our app into modules so for example we
+
+could have beers reviews and storage so
+
+the idea here is that everything to do
+
+with beers goes in one package
+
+everything to do with reviews goes
+
+another package and then everything to
+
+do a storage goes in the in its own
+
+package so at least now things are
+
+somewhat grouped logically but that's
+
+probably the only advantage we get with
+
+this approach it's still hard it's for
+
+example hearts hard to decide if reviews
+
+should still go in the beers package
+
+because there are beer reviews or do
+
+they warrant having their own package
+
+naming is worse because you've got beer
+
+stop beer now so you've got stutter and
+
+then if we jump back to the demo app
+
+whoops and jump into the module section
+
+there if you start running into funny
+
+naming clashes so for example in storage
+
+to avoid the stutter the Jason
+
+implementation of the storage ideally
+
+you wouldn't want to call it storage dot
+
+Jason
+
+but if you try to remit to rename it to
+
+just Jason so if we remove the storage
+
+from here then I get an error
+
+it says Jason is redeployed in this
+
+package and it is Reda cleared as a type
+
+of the storage in the same package so
+
+the storage type defines two types Jason
+
+and memory and we want to call it Jason
+
+but then if we actually want to call the
+
+Jason implementation storage of Jason we
+
+run into this funky name clash so I kind
+
+of had to compromise here and call this
+
+one Jason storage not ideal so let's try
+
+a different way grouping by context what
+
+do I mean by context well this way of
+
+thinking about your application is known
+
+as domain driven development so this is
+
+an approach to the software development
+
+popularized popularized by Vaughn Vernon
+
+and his famous read DTD book and it may
+
+seem fairly complicated and academic to
+
+you at first and it is quite a fake book
+
+but it's actually quite a natural way to
+
+think about your design and EDD is
+
+absolutely not about where your files go
+
+but it can guide your code structure
+
+really well and help you find the right
+
+one really well so what is DVD and how
+
+does it work well first of all it makes
+
+you think about the domain that you're
+
+dealing with and all the business logic
+
+in your app before you even write a
+
+single line of code so you define your
+
+bounded context that's a formal term
+
+used in DT D and then the models within
+
+each context and the ubiquitous language
+
+which is another term used in the DDD
+
+world what is a bounded context well
+
+it's basically a limit around your
+
+particular model so it's kind of like a
+
+boundary around a particular model and
+
+you can have many of them in your app so
+
+to give you an example if you think of
+
+an app that has
+
+user as an entity then in the sales
+
+context a user might have properties
+
+like the lead time or cost of
+
+acquisition but that's that's one
+
+context but a user for somebody working
+
+in customer support will have completely
+
+different properties attached to them
+
+like response time or the number of
+
+tickets submit it so we have two
+
+contexts here and we have that we were
+
+talking about the same thing the user
+
+but it just may mean different things to
+
+different different people and that's
+
+exactly what the different contexts are
+
+so you just define those and that
+
+bounded context help you decide what can
+
+what has to stay consistent within a
+
+particular boundary and what can change
+
+independently so for example if later on
+
+we wanted to add a new property to the
+
+user from the sales point of view like
+
+the number of days it took to onboard
+
+the customer or something like that then
+
+we can change that without affecting the
+
+the other context which is the customer
+
+support context for the user so then you
+
+start defining the building blocks of
+
+your system and there are a bunch of
+
+them defined in DDD so you kind of start
+
+to think about whether something is a
+
+value object or an entity or an
+
+aggregate or repository and this all
+
+sounds really formal and I'm not really
+
+going to go through the formal
+
+definitions of each of these you can
+
+look them up online and spend some time
+
+trying to understand it in your head but
+
+I will try and explain what they are
+
+based on our example app so we could
+
+think of our demo app as follows we only
+
+kind of have one context here and it's
+
+for a beer connoisseur who wants to give
+
+reviews for a beer so it's kind of like
+
+it could be a beer tasting context maybe
+
+so to that person drinking the beer and
+
+wanting to review it the beer has a
+
+specific meaning and that person cares
+
+about things like the ABV like the
+
+alcohol context and the flavor notes but
+
+it doesn't really care about things like
+
+the bar code but however if we had a
+
+different context in our app for example
+
+for a beer manufacturer the bar code
+
+might very much be an important part of
+
+the beer
+
+and then the language we're going to
+
+route is beer reviews and storage and
+
+you might think that's obvious and it's
+
+just a waste of time but it actually
+
+saves you a lot of inconsistencies down
+
+the road because how many times you set
+
+off writing something calling the
+
+storage storage and then somebody's
+
+gonna use the word database and
+
+somebody's gonna use the word repository
+
+or you're gonna have different UK and US
+
+spelling I've had that in my projects as
+
+well and then you just don't know which
+
+one to use and it's all getting
+
+consistent so it's quite important to
+
+actually define the language that you're
+
+gonna use in your code base and when
+
+talking to other people and you
+
+shouldn't just be talking to your dev
+
+team or your fellow developers you
+
+should be talking to all the
+
+stakeholders in the business so this
+
+language is a language that everybody
+
+all the stakeholders in that application
+
+can use whether it's support people or
+
+your sales people or your developers or
+
+your testers or anybody else and that
+
+actually helps massively because
+
+sometimes you might be discussing the
+
+application with a developer using this
+
+language and then somebody I don't know
+
+from the sales department is gonna
+
+overhear it and go hey that's not how it
+
+works because they can understand the
+
+language you're no longer talking in
+
+just dev terms only
+
+so the entities that we're gonna have is
+
+the beer envy and the second thing is
+
+value objects which could be things like
+
+the brewery or the author of a review
+
+and then what's the difference because
+
+that's that can be a bit tricky so when
+
+you think about an entity you think
+
+about an abstract concept that then can
+
+have instances so for example things
+
+like a customer and order a blog post a
+
+beer those are all entities and they can
+
+be instantiated and that value object is
+
+a very similar concept but it represents
+
+a value that on its own isn't really an
+
+entity but it can be a part of it
+
+so for example a barcode value object is
+
+part of the beer entity so they are a
+
+bit more like properties to entities and
+
+on top of that we've got aggregates and
+
+aggregates combine the entities together
+
+so if you have two entities that are
+
+related to one another
+
+so for example in our case we have a
+
+review
+
+that is related to a beer so the link
+
+here is the beer ID because the review
+
+needs a beer ID to then be linked to a
+
+particular one then ideally you could
+
+put an aggregate above those two to
+
+create you like a meta entity which will
+
+be the beer review which will be
+
+comprised of those two entities and then
+
+services are stateless operations that
+
+cannot go beyond responsibility or a
+
+natural responsibility of a particular
+
+entity so it's something that an entity
+
+basically shouldn't be doing it's an
+
+operation that an entity shouldn't
+
+really be doing on its own so in our
+
+case we have a beer adder or an adding
+
+operate service and a listing service
+
+and a review Lister and so on and so
+
+forth and an events the one definition
+
+that I sort of really like about events
+
+is that they capture a memory of
+
+something interesting that happened in
+
+your system that can affect the state of
+
+the system and can affect the state of
+
+your application there is nothing more
+
+to this they are just what what it says
+
+on the tin its events so things like
+
+errors or acknowledgments and so and so
+
+forth so in our case we can have things
+
+like the beer was added the duplicate
+
+beer was found or beer was not found and
+
+so on so forth and then last but not
+
+least the repository is essentially if
+
+it basically provides it provides a
+
+facade over some backing store so is the
+
+thing that sits in between your domain
+
+logic and your actual storage or
+
+database so in our case we have two we
+
+have a beer repository and a review
+
+repository and let's not forget that
+
+we're thinking here in abstract terms so
+
+this could be one database or it could
+
+be two different databases we don't care
+
+at this point because that's an
+
+implementation detail we think in
+
+abstract terms here so we have two
+
+repositories in this case and this may
+
+not be a hundred percent correct this is
+
+just my take on it and obviously if you
+
+discuss it with your team and as you
+
+discuss it with your team you get to
+
+refine it a lot more so by all means it
+
+may not be a hundred incorrect you could
+
+go about it in a slightly different way
+
+and I'm kind of really stretching it
+
+here because our example is really
+
+simple so you're gonna see like
+
+the actual implementation I didn't
+
+implement the aggregates I didn't
+
+mention factories here factories are for
+
+constructing more complex objects
+
+because we just don't really have them
+
+in our app so in the real world you
+
+could definitely be dealing with this
+
+kind of complexity like if you have an
+
+order which is an entity for a customer
+
+which is another entity so ideally you'd
+
+have an aggregate over those and then
+
+the order has a product which is not an
+
+entity and the product has a price which
+
+is a value objects and so on and so
+
+forth so in the real world you certainly
+
+can come across this kind of complexity
+
+and EDD just helps you to understand all
+
+the processes that are going on in your
+
+app and what is what in your app it's
+
+something you value objects or is
+
+something performing a function but as
+
+you can see you can apply DDD to
+
+problems of any size like I managed to
+
+sort of flesh this out for a simple demo
+
+app so don't be afraid to just leave out
+
+some things out of it if you just don't
+
+it's not like you have to have all those
+
+things in your application so as a first
+
+take on this we could have the following
+
+the main change here is that now our
+
+package names communicate what they
+
+provide as opposed to what they contain
+
+so we have an adding package a reviewing
+
+package a listing package and beers and
+
+reviews so this makes it easier to avoid
+
+circular circular dependencies because
+
+now we don't have the one that we had
+
+before because now our adding and
+
+listing and reviewing services talk to
+
+storage and storage pulls from beers and
+
+reviews but then the modal packages like
+
+beers interviews they don't care about
+
+storage directly so we've broken that
+
+that link so we no longer have circular
+
+dependencies in here
+
+but there's one slight problem of this
+
+for example looking at this how do I add
+
+the sample data like so far away in all
+
+the structures we've had it at the
+
+adding of sample data bundled into the
+
+main function so we have no control over
+
+it we can't run it separately it's not
+
+independent from the app and then the
+
+question is kind of where does the
+
+sample sample data adding go like we
+
+only have one main function and also
+
+what if I wanted to add a completely
+
+different entry to this app what if I
+
+wanted to make a command line version
+
+that will
+
+to me for the beer properties and the
+
+reviews to add rather than accepting
+
+HTTP requests to add stuff it's kind of
+
+tricky to like then add thus add this to
+
+this structure but there is something
+
+that can help us here and that is called
+
+the hexagonal architecture so in a
+
+nutshell you start distinguishing
+
+between the parts of the system which
+
+form a core domain so the business logic
+
+and all the external dependencies are
+
+just implementation details so the
+
+external things can be anything from
+
+external other clients or external api's
+
+or databases or mail clients or cloud
+
+services anything that your app in inter
+
+interacts with why is it this way well
+
+the goal for the hexagonal architecture
+
+the problem that is trying to solve is
+
+to give you an ability to change one
+
+part of the app without having to change
+
+much else so making a small change to an
+
+app like changing the type of interface
+
+you use to talk to your app shouldn't
+
+really mean you have to rewrite the
+
+entire thing so for example if I wanted
+
+to swap out databases if I wanted to
+
+swap out a my sequel database for a no
+
+sequel database that shouldn't require
+
+me to touch any of the business logic
+
+right my logic doesn't care where the
+
+data gets stored so the hex model
+
+essentially recognizes that need you
+
+might be wondering are the layers here
+
+the same as the MVC layers and the
+
+answer is no because the MVC model tends
+
+to look at the inputs and outputs from
+
+kind of a top to bottom way so you go
+
+from inputs then the main logic and then
+
+the outputs at the bottom where is the
+
+hex model the inputs and outputs are
+
+just treated on the same level I think
+
+that's why it's it's a hex or you could
+
+make it a circle it's essentially the
+
+same external surface it doesn't care
+
+whether something is an input on an or
+
+an output it's just an external
+
+interface so how do you achieve that
+
+goal of not being not having to change
+
+much or affect unrelated parts of the
+
+app well the key rule in the hex model
+
+is that dependencies are only allowed to
+
+point inwards so the outer layers can
+
+reach out to the domain as much as they
+
+like they can
+
+use the definitions of entities and so
+
+on defined in the model and in the
+
+domain but the domain absolutely cannot
+
+reference anything outside of it so that
+
+implies a heavy use of interfaces an
+
+inversion of control and indeed we tend
+
+to have interfaces or you pretty much
+
+have to have interfaces at every
+
+boundary between each layer so the core
+
+domain will define the business logic in
+
+fairly abstract terms without carrying
+
+about implementation details and then
+
+the rest of the application will
+
+implement those interfaces to satisfy
+
+the domains needs and then those
+
+internal layers in turn will define
+
+their interfaces for example the
+
+application layer could define the
+
+interface for storage because it needs
+
+the storage to perform these functions
+
+and then the outer layers will have to
+
+satisfy that implement that interface
+
+and implement it with a particular
+
+storage type so that means that as long
+
+as the interface required by the layer
+
+is satisfied by something we can just
+
+swap them in and out really easily like
+
+we can swap the store at the particular
+
+storage implementations as long as the
+
+interface is satisfied everything's fine
+
+so how would that work for our demo app
+
+well we have kept the service packages
+
+so we have adding listing and reviewing
+
+they're in yellow here so those three
+
+packages are kind of our domain packages
+
+and you could if you wanted to put a
+
+subdirectory under the pkg directory
+
+called domain and put all your domain
+
+packages in there some people like that
+
+like this sort of very pure approach I'm
+
+kind of undecided I'm easy on this I
+
+like keeping my structure fairly flat
+
+still even in the DDD model so I don't
+
+like my structures to be coming to
+
+become too much of nested trees or too
+
+much tree like so I tend to not put the
+
+domain top directory unless there is
+
+there are so many packages that it just
+
+makes your life easier
+
+and now we also you might notice that
+
+we've moved the struct definitions into
+
+each one of the domain packages so the
+
+listing has its own definition of beers
+
+and the adding has
+
+definition of beers which is really nice
+
+because now we can get rid of that
+
+problem where sometimes we need to
+
+specify a property and sometimes we
+
+might not so the adding package the beer
+
+in there probably doesn't have a beer ID
+
+in the struct
+
+but then the listing package probably
+
+does and then we have packages in red
+
+which are the input and output
+
+interfaces so in our case we just have
+
+HTTP and storage and the HTTP package
+
+provides our handlers and then the
+
+storage is the actual storage
+
+implementations so you might have
+
+noticed that I also put two top-level
+
+directories CMD + PKG and you might have
+
+seen them in projects online and if
+
+you're wondering what the hell is that
+
+it seems to be a trend now in the NGO
+
+community that has emerged over time and
+
+it's kind of becoming a bit of a
+
+standard now so the goal here is to
+
+separate the binaries from your actual
+
+go code so if you have at least one
+
+binary or more you put them under the
+
+CMD package so in our case i've actually
+
+broken up the main function now into two
+
+in the main beer server and the adding
+
+of sample data which solves another
+
+problem really nicely because now they
+
+are completely independent i can run one
+
+without running the other and then if
+
+your project also has a lot of non go
+
+files like a lot of non code files like
+
+docker files or documentation or
+
+anything else it's just like a nicer a
+
+cleaner way to structure your repo is
+
+just to put all the go packages under
+
+the pkg directory so that's what it is
+
+if your project doesn't have any other
+
+files you can probably skip that and
+
+then what if we wanted to add a new
+
+client like I said before what if we
+
+added wanted to add like a command line
+
+version of this service well easy peasy
+
+you just check in another directory
+
+subdirectory under the CMD directory and
+
+create a new binary which could start
+
+the app in a different way so it solves
+
+that problem nicely as well and I'm
+
+finally looking at the structure we
+
+start to get a pretty good idea of what
+
+this app does just by looking at the
+
+names I mean we can see beers and
+
+reviews and we can see verbs like adding
+
+and listing and reviewing so that this
+
+structure actually gives us quite a good
+
+idea of what the app does including
+
+that it's beer server and it has sample
+
+data adding so I like this because it
+
+makes it easy to navigate and like if
+
+you you if you apply DDD and if you
+
+apply the naming from DDD and you focus
+
+on the names that tell you what the
+
+package provides rather than what it
+
+contains the code just naturally guides
+
+you through it through itself like
+
+reading through this code you can
+
+naturally you go on a walk through and
+
+the code just does it for you by itself
+
+you don't have to put put much effort
+
+into solving that by yourself
+
+so I was a bit undecided in where to put
+
+the sample data files I could move them
+
+from here to the sample data directory
+
+because they cannot belong there or
+
+maybe even better
+
+I could put a top-level directory called
+
+resources or fixtures or a sample data
+
+or whatever and maybe define the sample
+
+data in a completely non code related
+
+format like a Yama file or a JSON file
+
+or whatever I wanted and then basically
+
+get the main function to then input that
+
+file and parse it and turn it into go
+
+arrays so again there's different
+
+options and it's kind of just up to what
+
+you prefer end of the day and then again
+
+a really good benefit of this structure
+
+that you kind of tend to notice only
+
+over time or in bigger projects is how
+
+easy it is to extend and add bits to it
+
+without really having to change much
+
+else so suppose you wanted to add a
+
+different version of the API for your
+
+app you want it to be you know you want
+
+to maybe create an RPC version of that
+
+API or maybe you want to have a soap API
+
+well you just check in a directory under
+
+the HTTP package and they all can still
+
+use the same services that are defined
+
+so adding listing and reviewing so
+
+nothing else needs to change brilliant
+
+so this gets us to a pretty good state I
+
+thought of course this is probably an
+
+overkill for simple apps again going
+
+back to what I said before
+
+don't overcomplicate if you don't need
+
+to I don't I wouldn't say you need to
+
+necessarily start out with the CMD + PKG
+
+package directories they are easy enough
+
+to add over time if you need them so I'd
+
+say start out with the simple
+
+flat structure and then you can always
+
+morph into this kind of structure over
+
+time unless you know from the start that
+
+you're just building a very complex apps
+
+app and then remember that you can apply
+
+the DDD thinking in a flat structure to
+
+DDD doesn't really enforce a particular
+
+structure so it just happens to be that
+
+if you think about your go programs and
+
+group them by context or the domain
+
+rather die rather than by the
+
+functionality the pure implementation
+
+detail it tends to work in your favor
+
+but you can use any of the you can apply
+
+that at any level so at this point you
+
+might be thinking is there framework I
+
+can use to that captures all of this yes
+
+and no there are different de frameworks
+
+out there obviously the older ones that
+
+we know like go buffalo and go kids and
+
+lots of them there isn't a link to the
+
+article here that lists I think the top
+
+six frameworks in 2018 for golang and
+
+they all use slightly different
+
+approaches
+
+sometimes they mix and match different
+
+approaches personally I don't have a
+
+problem with using a framework if it
+
+fits my particular use case they can be
+
+a good way to get a great way to get
+
+started if you don't know where to start
+
+they can save you a lot of boilerplate
+
+typing and then it can give you some
+
+ideas or inspirations for how you can go
+
+about structuring your app but I tend to
+
+know use frameworks and introduce them
+
+like unless I can justify it just to
+
+avoid introducing that extra complexity
+
+complexity that the framework inevitably
+
+brings with itself so I think that's
+
+starting out with the blank page let's
+
+explore and try out different things and
+
+learn from first principles like explore
+
+those different concepts different
+
+design patterns and then once you
+
+understand those different approaches
+
+then it makes it easier for you to
+
+recognize them in any framework you come
+
+across later on and then you can judge
+
+those frameworks better you can then
+
+have a solid opinion on why this one is
+
+better than the other one so that's why
+
+I haven't talked about frameworks much
+
+today there is one project that I found
+
+interesting which is the go build team
+
+template if you've never heard of it
+
+maybe check it out it's kind of like a
+
+suite in between because it's a good
+
+shortcut because it pre defines the
+
+her file and a make file for your go
+
+apps and it has the pkg and a CMD
+
+directories but nothing inside it so it
+
+leaves the actual final implementation
+
+and the structure up to you but it
+
+allows you to cut a corner and then just
+
+sort of bootstrap the project a lot
+
+easier so this could be a nice
+
+in-between a few words and testing
+
+before we wrap up I think it makes the
+
+most sense to keep the test files next
+
+to the files that they're actually test
+
+I don't really see much of a reason to
+
+replicate the exact package structure
+
+like the the directory structure under a
+
+separate test directory I don't know I
+
+don't really see any benefit to that so
+
+I think keep the test files next to the
+
+files that they relate to and if you're
+
+using mocks again it's fine to use a
+
+shared sub package like mocks are
+
+reusable there's no really a good reason
+
+to make them not shared we all know
+
+there's two hard things in computer
+
+science cache invalidation naming naming
+
+and off-by-one errors so a few words on
+
+naming besides that it's hard we all
+
+know that choose package names like I
+
+said before that tend to explain what
+
+they provide rather than the pure
+
+function that they are whether something
+
+is a handler whatever avoid generic
+
+names like util and common because they
+
+just end up being the dumping ground for
+
+lots of unrelated stuff that just grows
+
+over time so follow the usual go
+
+conventions I've put a link there to
+
+Android's
+
+a very short slideshow on that and avoid
+
+stutter so something that I touch them
+
+before try and not duplicate the package
+
+name in your struct name so rather than
+
+doing strings string reader try and do
+
+strings reader if you can a very quick
+
+word on the main function and I'll defer
+
+to Matt here so my main in general in
+
+this in the in the in the sort of
+
+structure that groups by context it
+
+should really be sweet and short it
+
+should just initialize the thing and
+
+kick it off and not really do much else
+
+and so I think a nice
+
+they observed that overtime that my
+
+mains once I applied the DD D thinking
+
+my main functions tend to look a lot
+
+like this they let you just initialize
+
+stuff they maybe do some flag parsing
+
+like input flag parsing although he's
+
+cute still probably do that in a
+
+different function but beyond that very
+
+necessary initialization they just defer
+
+everything else to the actual packages
+
+so time for a quick recap the convention
+
+these days seems to be putting the
+
+binaries in a separate top-level
+
+directory putting the rest of the go
+
+code in its own directory like I said if
+
+your project is large enough to justify
+
+it
+
+thanks for grouping by context instead
+
+of generic functionality also kind of
+
+stay flexible on this adapt over time if
+
+you're going to have multiple packages
+
+probably a good idea to start using the
+
+domain like to use the domain approach
+
+and start thinking about the domain
+
+rather than the functional layers and
+
+implementations the implementations of
+
+actual external inputs and outputs tend
+
+to usually end up in their own packages
+
+that just kind of seems to always be the
+
+case keep your marks in a shared sub
+
+package keep any non go files in the
+
+root directory so everything from your
+
+make files to your gopher file to your
+
+doctor files documentation all of that
+
+keep your main short make it initialize
+
+and tie everything together avoid global
+
+scope for better maintainability and the
+
+init function so the init function the
+
+first problem I ran into with the init
+
+function in the demo app is in the flood
+
+structure I actually put the adding of
+
+sample data in the init function and the
+
+problem was that once I wrote tests for
+
+it and every time I run a test for
+
+anything it would run through the init
+
+file and try and add the sample data you
+
+have no control you can't turn in it off
+
+it will always run so basically try and
+
+avoid it I would say so I'm sorry I
+
+don't really have a single formula for
+
+you to use
+
+the truth is that there is no single
+
+right answer to code structure even my
+
+examples is just an example approach you
+
+could have approached this problem
+
+differently and they can probably be
+
+improved in many ways so if you have any
+
+ideas by all means tell me send me pull
+
+requests I really like this quote by
+
+Bruce Lee be like water so don't be
+
+afraid to change your mind later on
+
+almost expect that you will never get
+
+the your structure right the first time
+
+round almost expect it to change so and
+
+remember that you have domain and
+
+language and your application will
+
+expand and it will morph and it will
+
+change over time so it's only natural
+
+that the structure will follow that and
+
+change as well so be prepared to adapt
+
+don't overcomplicate for no reason
+
+consider the complexity of what you're
+
+dealing with before deciding on the
+
+structure so if you know you're writing
+
+a simple app maybe just don't even
+
+bother looking into DDD if you're if you
+
+know you're approaching a big problem
+
+then maybe be prepared to to use a more
+
+complicated structure but go for the
+
+simplest solution for today
+
+don't try and code for the future I
+
+really like this quote whoops sorry
+
+as simple as possible but no simpler
+
+it's like I said before it kind of
+
+captures the idiomatic go away perfectly
+
+above everything be consistent in your
+
+approach so it will help you it will
+
+fail help your fellow programmers coming
+
+into the codebase later on experiment
+
+prototype prototyping will help you ask
+
+questions you didn't even know you
+
+should be asking if you want inspiration
+
+maybe look at the standard library
+
+that's a pretty good example of good
+
+code structure and remember that good
+
+choice good practices and choices they
+
+will come with experience so and we've
+
+definitely seen that in the community we
+
+didn't start out having the CMD and Pack
+
+pkg directories it just emerged as a
+
+standard or a trend over time and share
+
+your ideas if it wasn't for people who
+
+shared those ideas we
+
+be we wouldn't have all those best
+
+practices we have today
+
+so share your ideas and maybe published
+
+blog post or something so that other
+
+people can benefit and maybe work on top
+
+of that and speaking of those people
+
+this talk wouldn't happen without those
+
+folks and many others as well
+
+but mostly thanks to Peter Bergen and
+
+Ben Johnson and Marcus Olson all of them
+
+published a lot of information online
+
+and their faults on code structure so I
+
+just wanted to say thank you for sharing
+
+the thoughts with us and I also put a
+
+few more links in here so there is an
+
+article about package focus design on
+
+the Gopher Academy blog Marcus Olson
+
+actually gave a talk about his DDD part
+
+of the very famous Java example of a DDD
+
+layout at goal on UK I think in 2016 as
+
+well so there's a link to that Brian
+
+Kedleston actually gave a talk earlier
+
+this year go freak on Russia which is it
+
+sounds very complementary to my talk so
+
+I'd encourage you to go and watch that
+
+as well it kind of goes into a bit more
+
+detail on naming and a lot of things I
+
+maybe haven't gone into a lot of detail
+
+today and if you want to find out more
+
+about Hagen architecture there is a
+
+really good blog post by Chris video on
+
+that if you have any feedback or if you
+
+want to ask me any questions feel free
+
+to tweet me my twitter is at the top you
+
+can do that any time
+
+and finally my demo code can be found on
+
+github I will tweet out the link to the
+
+slides and the repository so you can go
+
+through it in your own time there is
+
+clear directories marked for every
+
+single one of those structures so have a
+
+look at it in your own time and see if
+
+it makes sense so with that I hope you
+
+enjoyed the rest of the conference and
+
+thanks so much for listening
+
+[Applause]
+

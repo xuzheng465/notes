@@ -26,6 +26,10 @@ https://medium.com/@dhanushgopinath/concurrent-http-downloads-using-go-32fecfa1e
 
 https://gophercises.com/
 
+
+
+https://courses.calhoun.io/courses/cor_gophercises
+
 # Blog
 
 https://dev.to/quii Chris James | learn go with tests
@@ -62,4 +66,12 @@ https://www.youtube.com/justforfunc 不错的演讲者。教的不错, Understan
 
 
 - [ ] [[Go] Speed up your refactoring with GoLand](https://dev.to/julianchu/speed-up-your-refactoring-with-goland-7ei)
+
+
+
+# Concurrency
+
+https://github.com/ardanlabs/gotraining/tree/master/topics/go/concurrency/channels
+
+
 

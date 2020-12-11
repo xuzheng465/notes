@@ -233,27 +233,80 @@ func CopyDigits(filename string) []byte {
 
 
 
+# Map
 
+map类型的零值是nil， 也就是没有引用任何哈希表
 
 ```go
+var ages map[string]int
+fmt.Println(ages==nil)	// true
+fmt.Println(len(ages)==0) // true
+```
 
+map上的大部分操作，查找、删除，len和range循环都可以安全地工作在nil值的map上。他们的行为和一个空的map类似。但是向一个nil值的map存入元素将导致一个panic异常：
+
+```go
+ages["carol"] = 21 // panic: assignment to entry in nil map
+```
+
+在向map存数据前必须先创建map
+
+```go
+if age, ok:=ages["bob"]; !ok {
+		fmt.Println("There is no ages[\"bob\"]")
+		fmt.Println("The default of age is", age)
+	}
+```
+
+```
+There is no ages["bob"]
+The default of age is 0
 ```
 
 
 
-```go
+要判断两个map是否包含相同的key和value，必须通过一个循环实现
 
+```go
+func equal(x, y map[string]int) bool {
+	if len(x) != len(y) {
+		return false
+	}
+	for k, xv := range x{
+		if yv, ok := y[k]; !ok || yv!=xv {
+			return false
+		}
+	}
+	return true
+}
 ```
 
 
 
+有时我们需要一个map或set的key是slice类型，但是map的key必须是可以比较的类型。但slice并不满足这个条件。不过我们可以通过两个步骤绕过这个限制。
 
+第一步，定义一个辅助函数k，将slice转换为map对应的string类型的key。
+
+确保只有x和y相等时k(x)==k(y)才成立。然后创建一个key为string类型的map。
+
+在每次对map操作时先用k辅助函数将slice转化为string类型
 
 ```go
+var m = make(map[string]int)
 
+func k(list []string) string {
+  return fmt.Sprintf("%q", list)
+}
+
+func Add(list []string) { m[k(list)]++}
+func Count(list []string) { return m[k(list)] }
 ```
 
+使用同样的技术可以处理任何不可比较的key类型，不仅仅是slice类型。
 
+辅助函数`k(x)` 也不一定是字符串类型，可以返回任何可比较的类型，如**整数**、**数组**或**结构体**等。
+
+统计输入中每个Unicode码点出现的次数。
 
 ```go
 
@@ -292,4 +345,41 @@ Go has builtin testing coverage tool.
 Go的协程师轻量级的线程，是逻辑态的, Go可以容易的起上万个协程
 
 其他程序c/java的多线程，往往是内核态的，比较重量级，几千个线程可能耗光cpu
+
+## 无缓冲通道
+
+无缓冲通道是指在接收前没能力保存任何值的通道。
+
+* 这种类型的通道要求发送goroutine和接收goroutine同时准备好，才能完成发送和接收的操作。
+
+* 如果两个goroutine没有同时准备好，通道会导致==先==执行发送和接收操作的goroutine阻塞等待。
+
+## 有缓冲的通道
+
+buffered channel是一种在被接收前能存储一个或多个值的通道。
+
+不要求双方同时完成发送和接收。
+
+* 接收方：
+  * 只有在通道没有要接收的值时，接收动作才会阻塞
+* 发送方：
+  * 只有在通道没有可用缓冲区容纳被发送的值时，发送动作才会阻塞
+
+
+
+无缓冲通道保证发送和接收的goroutine在同一时间进行数据交换；
+
+有缓冲的通道则没有这种保证。
+
+## Guarantee of Delivery
+
+The `Gurantee of Delivery` is based on one question: "Do I need a guarantee that the signal sent by a particular goroutine has been received?"
+
+<img src="./basics.assets/guarantee_of_delivery.png" alt="Ardan Labs" style="width:600px;" />
+
+
+
+
+
+
 

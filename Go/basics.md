@@ -273,3 +273,23 @@ Go has builtin testing coverage tool.
 
 在 Go 中不能对切片使用等号运算符。你可以写一个函数迭代每个元素来检查它们的值。但是一种比较简单的办法是使用 [`reflect.DeepEqual`](https://github.com/studygolang/learn-go-with-tests/tree/4ed8beb2dfdac75cd1cc23ed6ee9f51c4869e9f6/zh-CN/deepEqual/README.md)，它在判断两个变量是否相等时十分有用。
 
+
+
+# Concurrency
+
+1）M：操作系统的主线程（物理线程）
+
+2）P： 协程执行需要的上下文，逻辑处理器
+
+3） G：协程 goroutine
+
+
+
+<img src="./basics.assets/image-20201211002619887.png" alt="image-20201211002619887" style="zoom:50%;" />
+
+
+
+Go的协程师轻量级的线程，是逻辑态的, Go可以容易的起上万个协程
+
+其他程序c/java的多线程，往往是内核态的，比较重量级，几千个线程可能耗光cpu
+

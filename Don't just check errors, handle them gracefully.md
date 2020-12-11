@@ -2,7 +2,7 @@
 
 
 
-<img src="./Don't just check errors.assets/Screen-Shot-2016-04-23-at-11.39.26.png" alt="Don't just check errors, handle them gracefully" style="width:600px;" />
+
 
 ## Errors 只是值
 
@@ -36,7 +36,7 @@ if err == ErrSomething { … }
 
 我知道有时候这是不可能的，并且正如twitter上一些人指出的那样，写测试时根本无法遵守这个意见。尽管如此，在我看来，比较错误的字符串形式不咋好，你应该尽量规避。
 
-### Sentinel errors 成了公开API的一部分
+### Sentinel errors 作为公开API
 
 如果你的公共函数或方法返回一个特定值的错误，那么这个值必须是公开的，当然也要有文档。这将增加你的API的表面积。
 
@@ -209,7 +209,7 @@ return authenticate(r.User)
 
 如果authenticate返回一个错误，那么AuthenticateRequest会把错误返回给它的调用者，调用者可能也会这样做，以此类推。在程序的顶部，程序主体会将错误打印到屏幕或日志文件中，打印的内容是：No such file or directory。
 
-<img src="./Don't just check errors.assets/go_no_such_file.png" alt="go_no_such_file" style="width:600px;" />
+
 
 Donovan和Kernighan的《Go编程语言》建议你使用fmt.Errorf为错误路径添加上下文。
 

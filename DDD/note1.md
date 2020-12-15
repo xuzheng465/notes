@@ -353,6 +353,120 @@ Persistence vs. Domain Model
 
 
 
+行为具体来说就是验证对象状态的方法
+它也是调用要在对象上执行的业务操作的方法
+表达涉及对象的业务流程的方法
+
+<img src="/Users/xuzheng/Projects/notes/DDD/note1.assets/image-20201213083635910.png" alt="image-20201213083635910" style="zoom:50%;" />
+
+更好的方案是，当你创建这样的东西时，访问数据的唯一方式是由API中介的，而API是由对象本身暴露的。
+
+所以**API是模型的一部分**。
+它不是外部的一层代码，你可以调用也可以不调用。
+业务逻辑的容器不是外部的组件，而是作为重点的业务逻辑就内置在对象中。
+所以你不是设置属性，而是调用方法，并因为你调用的操作而改变对象的状态。
+这是一种更有效的处理和模拟真实世界的方式。
+
+### Aggregates and Value Types
+
+Work with fewer objects and coarse grained and with fewer relationships.
+
+* Protect as much as possible the graph of entities from outsider access
+* Ensure the state of child entities is always consistent
+* Actual boundaries of aggregates are determinded by business rules
+
+#### Common Responsibilities associated with an aggregate Root
+
+* Ensure encapsulated objects are always in a consistent state
+* Take care of persistence for all encapsulated objects
+* Cascade updates and deletions through the encapsulated objects.
+  * 它必须在图中进行级联更新和删除
+* Access to encapsulated objects must always happen by navigation
+  * 根必须保证对封装对象的访问始终是中介的，并且只通过根的导航进行。
+
+* 
+
+### Domain Services
+
+* Implement the domain logic that doesn't belong to a particular aggregate and most likely span over multiple entities.(实现领域逻辑，其不属于一个集合体，很可能跨越多个实体的领域逻辑)
+* Coordinate the activity of aggregates and repositories with the purpose of implementing a business action. (领域服务协调各个聚合体和存储库的运动，目的是实现所有业务操作，领域服务可能会消耗基础设施的服务，例如当他们需要发送电子邮件或短信时)
+* May consume services from the infrastructure, such as when sending an email or a text message is necessary.领域服务可能会消耗基础设施的服务，例如当他们需要发送电子邮件或短信时
+
+Actions in domain services come from requirements and are approved by domain experts.
+
+Names used in domain services are strictly part of the ubiquitous language.
+
+#### Example
+
+##### Determine whether a given customer reached the status of "gold" customer
+
+A customer earns the status of **"gold"** after she exceeds a given threshold of orders on a selected range of products.
+
+<img src="/Users/xuzheng/Projects/notes/DDD/note1.assets/image-20201213093658765.png" alt="image-20201213093658765" style="zoom:50%;" />
+
+
+
+##### Booking a meeting room
+
+Booking requires verifying availability of the room and processing payment
+
+<img src="/Users/xuzheng/Projects/notes/DDD/note1.assets/image-20201213093754003.png" alt="image-20201213093754003" style="zoom:50%;" />
+
+### Repositories
+
+In DDD, a repository is just the class that handles **persistence** on behalf of entities and ideally aggreagte roots.
+
+* Most popular type of domain service
+* Take care of persisting aggregates
+* One repository per aggregate root
+
+
+
+* Assembly with repositories has a direct dependency on data stores.
+* A repository is where you deal with connection strings and use SQL commands.
+
+### Events in the Business Domain
+
+Events是可选的，但它们只是一种**更有效**和**更有弹性的**方式来表达有时一些现实世界的业务领域的复杂性。
+
+Scenario:
+
+在网店应用中，下了一个订单，系统处理成功，说明付款没问题。
+送货单通过了，发货公司也收到了，然后订单生成并录入系统。
+现在怎么办呢？假设业务需求希望你在订单生成后执行一些特殊任务。
+现在的问题是，你会在哪里实现这样的任务？
+
+**第一种**方案只是将实现额外任务的代码并入执行订单处理的领域服务方法
+你基本上是通过必要的步骤来完成结账过程，如果你成功了，那么，在这一点上，你就会执行任何额外的任务。
+这一切都同步发生，而且只在一个地方编码。但，它的表现力并不强。
+它基本上是单体式（monolithic）代码，如果未来需要更改，你需要触及服务的代码来实现更改，有可能使域服务方法变得相当长，甚至复杂。这更有可能违反**ubiquitous language**。
+
+副词，when，通常指的是观察到企业中的某一事件和采取的行动。
+
+**那么事件呢？**事件让你不必把代码放在同一个地方，同时也带来了其他一些非同小可的好处。
+提出事件这个动作与处理事件的动作是有区别的，比如说，处理事件的动作可能有利于测试性。
+其次，你可以很容易地拥有多个处理程序来独立处理同一个事件。
+
+<img src="/Users/xuzheng/Projects/notes/DDD/note1.assets/image-20201213100816487.png" alt="image-20201213100816487" style="zoom:50%;" />
+
+
+
+
+
+
+
+<img src="/Users/xuzheng/Projects/notes/DDD/note1.assets/image-20201213101020553.png" alt="image-20201213101020553" style="width:600px;" />
+
+Events help significantly to coordinate actions within a workflow and to make use-case workflows a lot more resilient to changes.
+
+
+
+
+
+
+
+
+
 
 
 ## CQRS

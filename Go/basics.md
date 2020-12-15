@@ -383,3 +383,17 @@ The `Gurantee of Delivery` is based on one question: "Do I need a guarantee that
 
 
 
+# Writer
+
+```go
+type Writer interface {
+  Write(p []byte) (n int, err error)
+}
+```
+
+
+
+io.Writer 将数据放在某个地方
+
+
+

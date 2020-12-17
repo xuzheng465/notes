@@ -46,7 +46,7 @@ A sequence of elements from a source that supports data-processing operations.
 
 
 
-**流只能遍历一次**
+==**流只能遍历一次**==
 
 遍历之后，这个流就被消费掉了。
 

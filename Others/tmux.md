@@ -110,6 +110,12 @@ ctrl + b ;
 ctrl + b {
 ```
 
+Close current pane
+
+```
+ctrl + b x
+```
+
 
 
 

@@ -71,16 +71,18 @@ func (u User) TableName() string {
 如果想要更改type
 
 ```go
+// User .
 type User struct {
-	gorm.Model
-	Username  string `sql:"type:VARCHAR(15)"`
-	FirstName string `sql:"size:100"`
-	LastName  string
-  
+	UserID    int    `gorm:"primary_key"`
+	Username  string `sql:"type:VARCHAR(15);not null"`
+	FirstName string `sql:"size:100; not null" gorm:"column:FirstName"`
+	LastName  string `sql:"unique;unique_index;not null; DEFAULT:'Smith'" gorm:"column:LastName"`
+	Count     int    `gorm:"AUTO_INCREMENT"`
+	TempField bool   `sql:"-"`
 }
 ```
 
 
 
-
+<img src="./GORM.assets/image-20201216235613422.png" alt="image-20201216235613422" style="zoom:50%;" />
 

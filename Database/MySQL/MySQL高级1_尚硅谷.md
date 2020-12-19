@@ -1,3 +1,11 @@
+```
+mysql -S /tmp/mysql_3305.sock -uroot -p
+```
+
+
+
+
+
 # 初始设置
 
 
@@ -80,6 +88,8 @@ grant all privileges on *.* to xuzheng@localhost
 
 
 #### 注意: Group by使用原则
+
+`show variables like 'sql_mode';  `
 
 
 

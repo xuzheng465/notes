@@ -1,3 +1,41 @@
+# Book
+
+## Language
+
+1. - [ ] Modern Java In Action / Java实战 第2版
+
+     <img src="./TODO.assets/image-20201216022301616.png" alt="image-20201216022301616" style="zoom:50%;" />
+
+   - [ ] Effective Java
+
+     <img src="./TODO.assets/image-20201216022346925.png" alt="image-20201216022346925" style="zoom:50%;" />
+
+   - [ ] Java in a Nutshell
+
+   - [ ] Java Cookbook
+
+   - [ ] Modern Java Recipes
+
+2. Spring In Action 和 Spring Boot in Action
+
+3. 
+
+
+
+## Object Oriented Design
+
+1. - [ ] Head First Design Pattern
+   - [ ] Design Patterns
+   - [ ] The Object-Oriented Thought Process
+   - [ ] Object Design Style Guide
+   - [ ] 
+
+
+
+
+
+
+
 - [ ] [Making Your Java Code More Object-oriented](https://app.pluralsight.com/library/courses/object-oriented-java-code)
 - [ ] [Mastering Object-oriented Programming in Java](https://app.pluralsight.com/library/courses/object-oriented-programming-java/table-of-contents)
 - [ ] 

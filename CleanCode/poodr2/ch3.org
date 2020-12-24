@@ -1,0 +1,8 @@
+#+TITLE:Chapter 3
+#+AUTHOR:Oliver
+
+* Chapter 3 Managing Dependencies
+#+begin_src ruby
+class Gear
+  def gear_inches
+#+end_src

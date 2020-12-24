@@ -8,6 +8,14 @@ Tips
 du -h --max-depth=1 | sort -hr
 ```
 
+## Check ubuntu version
+
+
+
+```bash
+lsb_release -a
+```
+
 
 
 
@@ -88,3 +96,15 @@ Finder->View->Show View Options
 3. Find go.run.processes.with.pty there and turn it off.
 
 Now IDE will **`fold`** those information and will make it look cleaner.
+
+
+
+## meta key doesn't work in the doom emacs
+
+This is a setting in Terminal.
+
+In Terminal 2.5.1 the option is set differently than in the above comments:
+
+In the main Terminal menu, choose "**Preferences**" to open a dialog. Click the "**Profiles**" icon in the top of the dialog.
+
+In the Profiles section, make sure there is a check in the checkbox called "**Use Option as Meta key.**"

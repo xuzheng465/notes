@@ -29,7 +29,7 @@
 
 https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1
 
-
+- [ ] https://ewanvalentine.io/microservices-in-golang-part-1/
 
 - [ ] [Go and a Package Focused Design](https://blog.gopheracademy.com/advent-2016/go-and-package-focused-design/)
 

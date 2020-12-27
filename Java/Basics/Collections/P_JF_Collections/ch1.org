@@ -1,0 +1,15 @@
+#+TITLE:Collections
+
+*  Collection of Collections
+* Collection
+** List
+*** ArrayList
+*** LinkedList
+** Set -> HashSet
+*** SortedSet -> TreeSet
+** Queue -> PriorityQueue
+***   Deque ->LinkedList
+        |->ArrayDeque
+**
+* Map -> HashMap
+** SortedMap -> TreeMap

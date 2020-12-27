@@ -74,3 +74,17 @@ https://learn.unrealengine.com/home/dashboard
 
 [yip gamer path](/Users/xuzheng/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents/game-programmer.pdf)
 
+
+
+#### Assets
+
+
+
+https://www.textures.com/
+
+
+
+https://devassets.com/assets/rpg-tutorial-assets/
+
+
+

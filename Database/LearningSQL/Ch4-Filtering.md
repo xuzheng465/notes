@@ -234,8 +234,24 @@ AND NOT (amount>6 OR date(payment_date)='2005-06-19')
 
 
 
-```sql
+### ex 4-3
 
+Construct a query that retrieves all rows from the payments table where the amount is either 1.98, 7.98, or 9.98.
+
+```sql
+SELECT *
+FROM payment
+WHERE amount in (1.98, 7.98,9.98);
+```
+
+### ex 4-4 :cactus:
+
+Construct a query that finds all customers whose last name contains an A in the second position and a W anywhere after the A.
+
+```sql
+SELECT *
+FROM customer
+WHERE last_name LIKE "_A%W%"
 ```
 
 
@@ -244,135 +260,4 @@ AND NOT (amount>6 OR date(payment_date)='2005-06-19')
 
 ```
 
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
-
-
-
-```sql
-
-```
 

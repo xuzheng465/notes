@@ -29,3 +29,7 @@
 <img src="./gamer-map.assets/5-2.png" alt="5-2" style="width:700px;" />
 
 <img src="./gamer-map.assets/5-3-9084199.png" alt="5-3" style="width:700px;" />
+
+### 9. Game Physics and Animation
+
+<img src="./gamer-map.assets/9-game-physics.png" alt="9-game-physics" style="width:700px;" />

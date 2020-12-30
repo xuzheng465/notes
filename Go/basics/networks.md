@@ -226,7 +226,15 @@ sadd emails tom@gamil.com jack@hotmail.com
 
 ##### smembers
 
+取出所有值
 
+##### sismember
+
+判断值是否是成员
+
+##### srem
+
+删除指定值
 
 
 

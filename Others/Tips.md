@@ -2,13 +2,13 @@ Tips
 
 
 
-## 在Linux中如何查看当前目录文件大小, 并从大到小排列?
+### 在Linux中如何查看当前目录文件大小, 并从大到小排列?
 
 ```bash
 du -h --max-depth=1 | sort -hr
 ```
 
-## Check ubuntu version
+### Check ubuntu version
 
 
 
@@ -20,7 +20,7 @@ lsb_release -a
 
 
 
-## How to open a tar file
+### How to open a tar file
 
 ```bash
 tar -xvf file.tar
@@ -28,7 +28,7 @@ tar -xvf file.tar
 
 
 
-##  What about tar.gz
+###  What about tar.gz
 
 ```bash
 tar -zxvf file.tar.gz
@@ -36,13 +36,25 @@ tar -zxvf file.tar.gz
 
 
 
-## typedef usage in C
+### typedef usage in C
 
 ```c
 typedef struct list {
   	item_type item;
   	struct list *next;
 } list;
+```
+
+### 打印file类型
+
+```c
+
+char *filetype[] = { "unknown", "FIFO", "character device", "unknown", "directory",
+                        "unknown", "block device", "unknown", "file",
+                        "unknown", "symlink", "unknown", "socket" };
+
+printf("file type: %s\n", filetype[(sb.st_mode >> 12) & 017]);
+
 ```
 
 

@@ -249,7 +249,7 @@ Read and process events
 
 
 
-<img src="/Users/xuzheng/Projects/notes/C++/linuxProgramming/note2.assets/image-20210118220308822.png" alt="image-20210118220308822" style="zoom:50%;" />
+<img src="/Users/xuzheng/Projects/notes/C++/linuxProgramming/note2.assets/image-20210118220308822.png" alt="image-20210118220308822" style="width:700px; " />
 
 
 

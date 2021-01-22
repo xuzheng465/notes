@@ -36,7 +36,7 @@ struct stat {
 }
 ```
 
-![stat-structure-1](./note2.assets/stat-structure-1.png)
+<img src="./note2.assets/stat-structure-1.png" alt="stat-structure-1" style="width:700px;" />
 
 The creation time of a file is not recorded
 

@@ -21,3 +21,9 @@ export GOPATH=$GOPATH:/Users/xuzheng/Projects/gocode
 
  
 
+```bash
+
+go env -w GOPROXY=https://goproxy.cn,direct # 添加代理好在国内下载
+
+```
+

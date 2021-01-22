@@ -1,3 +1,7 @@
+# File
+
+
+
 文件就是数据源(保存数据的地方)
 
 流: 数据在数据源(文件)和程序(内存)之间经历的路径
@@ -153,4 +157,8 @@ func CopyFile(dstFileName string, srcFileName string) (written int64, err error)
   return io.Copy(writer, reader)
 }
 ```
+
+# 
+
+
 

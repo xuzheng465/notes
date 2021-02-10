@@ -33,7 +33,9 @@ we need to be very careful. Everything we pass into generic function is a pointe
 
 
 ```c
+
 void qsort(void *arr, size_t nelems, size_t elemsz, int (*cmpfn)(const void*, const void*));
+
 ```
 
 sort arr according to cmpfn
@@ -47,6 +49,7 @@ sort arr according to cmpfn
 ---
 
 ```c
+
 int find_max(void *arr, size_t nelems)
 {
   int max = arr[0];
@@ -55,6 +58,7 @@ int find_max(void *arr, size_t nelems)
   }
   return max;
 }
+
 ```
 
 
@@ -148,9 +152,15 @@ void * memcpy(void *dest, const void *src, size_t len)
 }
 ```
 
-* Both of these functions copy n bytes from the location pointed to by s2 to the location pointed to by s1, and both return the value of s1. 这两个函数都从s2指向的位置拷贝n个字节到s1指向的位置.
-* The difference between the two, as indicated by the keyword restrict, is that memcpy() is free to assume that there is no overlap between the two memory ranges. `memcpy()` 假设两个内存区域之间没有重叠
-* memmove()不做这样的假设, 所以拷贝过程类似于先把所有字节拷贝到一个临时缓存区, 然后再拷贝到最终目的地.
+* `memcpy` is a function that copies a specified amount of bytes at one address to another address
+* 
+* Both of these functions copy n bytes from the location pointed to by s2 to the location pointed to by s1, and both return the value of s1. 
+  * 这两个函数都从s2指向的位置拷贝n个字节到s1指向的位置.
+* The difference between the two, as indicated by the keyword restrict, is that memcpy() is free to assume that there is no overlap between the two memory ranges. 
+  * `memcpy()` 假设两个内存区域之间没有重叠
+* `memmove()`不做这样的假设, 所以拷贝过程类似于先把所有字节拷贝到一个临时缓存区, 然后再拷贝到最终目的地.
+
+
 
 ---
 
@@ -183,6 +193,41 @@ gswap(s1, s2, sizeof(char *));
 * swaps the first and the last elem
 
 First thought
+
+
+
+
+
+----
+
+## qsort
+
+```c
+
+void qsort(void *base, size_t nelems, size_t elem_size_bytes,
+          int (*compar)(const void *, const void *));
+
+```
+
+`base`: 表示指向哪个数组
+
+`nelems`：有多少个元素
+
+`elem_size_bytes`：表示每个元素的大小，how width of each elements
+
+
+
+
+
+`strcmp(a, b);`
+
+**negative**: the first element is less than the second element
+
+**zero**: the elements are equal
+
+**positive**: the first element is greater than the second element
+
+
 
 
 

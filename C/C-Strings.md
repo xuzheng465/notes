@@ -4,7 +4,7 @@
 
 ## size_t
 
-First, the **stddef.h** header file (included when you include **stdio.h**) defines **size_t** to be whatever the type your system uses for **sizeof**;
+First, the `stddef.h` header file (included when you include `stdio.h`) defines `size_t` to be whatever the type your system uses for `sizeof`;
 
 `size_t` regularly used for array indexing and loop counting. If the compiler is `32-bit` it would work on `unsigned int`. If the compiler is `64-bit` it would work on `unsigned long long int` also. There for maximum size of `size_t` depending on compiler type.[1][]
 
@@ -59,7 +59,7 @@ for (char ch = 'a'; ch<='z'; ch++) {
 
 ## C Strings
 
-<img src="/Users/xuzheng/Projects/notes/CSAPP/C-Strings.assets/image-20201114155921934.png" alt="image-20201114155921934" style="zoom:40%;" />
+
 
 * C has no dedicated variable type for strings. 
 * In C, a tring is represented as an array of characters with a special ending sentinel value.
@@ -114,9 +114,11 @@ strspn() 函数返回 str 的最大初始段长度，该段只包含 src 指向�
 > How many places canwe go  in the first string before I encounter a character _not_ in the second string?
 
 ```c
+
 char daisy[10];
 strcpy(daisy, "Daisy Dog");
 int spanLength = strspn(daisy, "aDeoi"); // 3  's'
+
 ```
 
 * strcspn(c = "complement") returns the length of the initial part of the first thing which contains only characters not in the second string
@@ -127,7 +129,9 @@ int spanLength = strspn(daisy, "aDeoi"); // 3  's'
 
 
 ```c
+
 char *strstr(const char *s1, const char *s2);
+
 ```
 
 * Returns a pointer to the location of the first occurrence in s1 of the sequence of characters in s2 (excluding the terminating null character); Return NULL if no match is found.
@@ -143,6 +147,8 @@ char *strchr(const char *s, int c);
 * 在s指向的字符串中搜索c的第一次出现的位置(int c 被转换成char类型). null字符是字符串的一部分; 返回指向首次出现的指针, 如果没有找到返回NULL
 
 strcmp(str1, str2), str1在前, 则<0, str1在后, 则>0.
+
+
 
 ```c
 int cmpResult = strcmp(str1, str2);
@@ -160,8 +166,10 @@ if (compResult == 0) {
 * We must make sure there is enough space in the destination to hold the entire copy, including the null-terminating character.
 
 ```c
+
 char str2[6];	// not enough space!
-strcpy(str2, "hello, world") // overwrites other memory!
+strcpy(str2, "hello, world"); // overwrites other memory!
+  
 ```
 
 * writing past memory bounds is called a "buffer overflow". It can allow for security vulnerabilites!

@@ -1,0 +1,98 @@
+{
+  "main": {
+    "id": "6631872e8c8b3fa6",
+    "type": "split",
+    "children": [
+      {
+        "id": "eef96f90c93563a8",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "empty",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "36c8c7d36defb447",
+    "type": "split",
+    "children": [
+      {
+        "id": "611e3a566416c0a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e945c9dc4921f540",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "69d667a1c0ac54f8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 232,
+    "collapsed": true
+  },
+  "right": {
+    "id": "d9f39a008d3849ea",
+    "type": "split",
+    "children": [
+      {
+        "id": "7f01ca60a82a6319",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a666bffef5673a28",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Go/basics/Go scheduler.md",
+    "Go/basics/os scheduler.md",
+    "Go/basics/Untitled.md",
+    "Go/ultimateGO/8.1-OS scheduler.md",
+    "Go/ultimateGO/Untitled.md",
+    "C++/C++_1.md",
+    "C++/linuxProgramming/note1.md",
+    "C++/linuxProgramming/2-file-dir.md",
+    "C++/Basics/Untitled.md",
+    "Networking/PhysicalLayer2.md"
+  ]
+}

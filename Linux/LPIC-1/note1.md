@@ -73,16 +73,20 @@ grep ONBOOT !$
 
 
 ```
-
 yum install -y redhat-lsb-core net-tools epel-release kernel-headers kernel-devel 
+```
 
+```
+sudo reboot
 ```
 
 
 
+
+
 ```
 
-yum groupinstall -y "Development Tools"
+yum group install -y "Development Tools"
 ```
 
 

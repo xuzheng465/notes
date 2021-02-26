@@ -10,7 +10,7 @@ du -h --max-depth=1 | sort -hr
 
 ### Check ubuntu version
 
-
+版本
 
 ```bash
 lsb_release -a

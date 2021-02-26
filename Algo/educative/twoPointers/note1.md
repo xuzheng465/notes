@@ -17,3 +17,49 @@ Given an array of sorted numbers and a target sum, find a pair in the array whos
 
 
 
+```c++
+class Solution {
+public:
+    /**
+     * 
+     * @param numbers int整型vector 
+     * @param target int整型 
+     * @return int整型vector
+     */
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        // write code here
+        vector<int> ans;
+        vector<int> temp;
+        temp=numbers;
+        int size = temp.size();
+        sort(temp.begin(), temp.end());
+        int left = 0, right = size - 1;
+        while (left < right) {
+            int curSum = numbers[left] + numbers[right];
+            if (curSum == target) {
+                break;
+            }
+            if (target > curSum)
+                left++;
+            else
+                right--;
+        }
+        if (left<right) {
+            for (int k = 0; k<size; k++) {
+                if (left<size&&numbers[k]==temp[left]){
+                    ans.push_back(k+1);
+                    left=size;
+                }
+                else if (right<size && numbers[k] == temp[right]) {
+                    ans.push_back(k+1);
+                    right = size;
+                }
+                if (left==size&&right==size) return ans;
+            }
+            
+        }
+        return ans;
+    }
+};
+```
+

@@ -54,7 +54,7 @@ git push personal master
 
 1. Open Finder.
 2. In the menu bar, select Go → Connect to Server....
-3. The server address is smb://192.168.162.162/vagrant.
+3. The server address is `smb://192.168.162.162/vagrant`.
 4. The username is vagrant and the password is vagrant.
 
 

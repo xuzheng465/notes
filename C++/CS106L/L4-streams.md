@@ -1,3 +1,13 @@
+A stream is an abstraction for input/output
+
+
+
+
+
+
+
+
+
 ##### getline
 
 read a whole line
